@@ -1,0 +1,10 @@
+#mac-specific
+.DS_Store
+settings.json
+
+#incompatible filetypes
+*.mp*
+*.ogg
+*.wav
+*.mp3
+*.mp4

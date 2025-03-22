@@ -1,0 +1,37 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    margin: 10px 0;
+}
+
+.n-column {
+    -ms-flex: 20%;
+    flex: 20%;
+    max-width: 20%;
+    padding: 0 20px 0 0;
+    margin: 10px 0;
+}
+
+.n-column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    .n-column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .n-column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+}

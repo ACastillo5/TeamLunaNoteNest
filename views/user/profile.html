@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" gallery="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" gallery="ie=edge">
+  <title>Profile</title>
+  <link rel="stylesheet" href="../../styles/styles.css">
+  <link rel="stylesheet" href="../../styles/thumbnails.css">
+  <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <!-- insert nav dynamically here -->
+  <main>
+    <br>
+    <div class="title">
+      <h1>@Username's Profile</h1>
+      <button id="byclass">BY CLASS</button>
+      <button id="seeall">SEE ALL</button>
+    </div>
+    <br><br>
+    <h2>Submitted Notes</h2>
+    <div class="row">
+      <div class="n-column">
+        <a href=#><img src="../../images/placeholder.png"></a>
+        <h3>test</h3>
+        <p>Testinggg</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="n-column">
+        <a href=#><img src="../../images/placeholder.png"></a>
+        <h3>test</h3>
+        <p>Testinggg</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="n-column">
+        <a href=#><img src="../../images/placeholder.png"></a>
+        <h3>test</h3>
+        <p>Testinggg</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="n-column">
+        <a href=#><img src="../../images/placeholder.png"></a>
+        <h3>test</h3>
+        <p>Testinggg</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="n-column">
+        <a href=#><img src="../../images/placeholder.png"></a>
+        <h3>test</h3>
+        <p>Testinggg</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="n-column">
+        <a href=#><img src="../../images/placeholder.png"></a>
+        <h3>test</h3>
+        <p>Testinggg</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
+    </div>
+
+  </main>
+  <script src="index.js"></script>
+  <script>
+    // !!!!!! THIS IS TEMPORARY CODE !!!!!!
+    // TO BE REPLACED WITH DYNAMICALLY-LOADING NOTES
+    document.addEventListener("DOMContentLoaded", function () {
+      const byclassBtn = document.getElementById("byclass");
+      const allBtn = document.getElementById("seeall");
+      const nColumns = document.querySelectorAll(".n-column");
+      let fColumn = null;
+
+      allBtn.classList.add("active");
+
+      byclassBtn.addEventListener("click", function () {
+        byclassBtn.classList.add("active");
+        allBtn.classList.remove("active");
+
+        nColumns.forEach(column => column.style.display = "none");
+
+        if (!fColumn) {
+          fColumn = document.createElement("div");
+          fColumn.className = "f-column";
+          fColumn.innerHTML = "<p>folders go here</p>";
+          document.querySelector(".row").appendChild(fColumn);
+        }
+
+        fColumn.style.display = "block";
+      });
+
+      allBtn.addEventListener("click", function () {
+        allBtn.classList.add("active");
+        byclassBtn.classList.remove("active");
+
+        nColumns.forEach(column => column.style.display = "block");
+
+        if (fColumn) fColumn.style.display = "none";
+      });
+    });
+
+  </script>
+</body>
+
+</html>

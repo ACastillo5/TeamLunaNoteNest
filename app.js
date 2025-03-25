@@ -4,11 +4,13 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
+app.set('view engine', 'ejs');
+
 // Serve static files (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'homePage.html'));
+  res.sendFile(path.join(__dirname, 'homepage.html'));
 });
 
 app.get('/about', (req, res) => {

@@ -11,14 +11,19 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
+.column-title {
+    text-align: left;
+    font-size: 20px;
+}
+
 .body-container {
     text-align: center;
     background-color: rgba(220, 222, 222, 0.815);
     border-radius: 1px;
     padding: 30px;
-    max-width: 10000px;
-    height: 400px;
-    margin: 0 auto;
+    width: 100%; /* Ensure it spans the full width of the parent */
+    height: 375px;
+    margin: 0;
 }
 
 main {
@@ -39,6 +44,17 @@ hr {
     background-color: black;
     margin: 5px 0;
 }
+
+.heading{
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Push items to the edges (left and right) */
+    align-items: center; /* Vertically align items */
+    background-color: rgba(220, 222, 222, 0.815);
+    border-bottom: 2px solid black;
+    padding: 20px;
+    height: 80px;
+}
+
 
 /* BELOW IS FOR THE BUTTONS NEXT TO THE h1's */
 /* YOU CAN USE THIS BUT PLEASE ASK BEFORE EDITING/DELETING */
@@ -69,6 +85,35 @@ button {
     text-decoration: none;
     font-size: 16px;
     margin-top: 20px;
+    cursor: pointer;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: lightslategray;
+    box-shadow: 0 0;
+}
+
+.small-btn {
+    display: inline-block;
+    background-color: lightsteelblue;
+    color: black;
+    padding: 15px 20px;
+    border: 1px solid;
+    border-color: #000;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.small-btn:hover, .small-btn:active {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: lightslategray;
+    box-shadow: 0 0;
 }
 
 button:hover, button:active {
@@ -84,6 +129,33 @@ button.active {
     box-shadow: 0 0;
     background-color: black;
     color: white;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.text-seperate{
+    font-size: 40px;
+    text-align: left;
+    padding-top: 2cm;
+    padding-left: 4cm;
+}
+
+.underline {
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+
+.no-underline {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
 }
 
 /* END */

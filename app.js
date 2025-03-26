@@ -9,44 +9,40 @@ app.set('view engine', 'ejs');
 // Serve static files (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname)));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'homepage.html'));
-});
-
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'aboutPage.html'));
-});
-
-app.get('/account', (req, res) => {
-  res.sendFile(path.join(__dirname, 'accountPage.html'));
-});
-
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'loginPage.html'));
-});
-
-app.get('/noteView', (req, res) => {
-  res.sendFile(path.join(__dirname, 'notePreviewPage.html'));
-});
-
-app.get('/profHomePage', (req, res) => {
-  res.sendFile(path.join(__dirname, 'professorHomePage.html'));
-});
-
-app.get('/studentHomePage', (req, res) => {
-  res.sendFile(path.join(__dirname, 'studentHomePage.html'));
+app.get('/preview', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/notes/preview.html'));
 });
 
 app.get('/search', (req, res) => {
-  res.sendFile(path.join(__dirname, 'searchPage.html'));
-});
-
-app.get('/signup', (req, res) => {
-  res.sendFile(path.join(__dirname, 'sign_up_Page.html'));
+  res.sendFile(path.join(__dirname, '/views/notes/search.html'));
 });
 
 app.get('/upload', (req, res) => {
-  res.sendFile(path.join(__dirname, 'uploadPage.html'));
+  res.sendFile(path.join(__dirname, '/views/notes/upload.html'));
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/user/login.html'));
+});
+
+app.get('/profile', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/user/profile.html'));
+});
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/user/signup.html'));
+});
+
+app.get('/profHomePage', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/professor-home.html'));
+});
+
+app.get('/studentHomePage', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/student-home.html'));
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
 app.listen(PORT, () => {

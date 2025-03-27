@@ -12,11 +12,44 @@
   <script src="/accountHead.js" defer></script>
 </head>
 
-<body>
+<body style="background-color: lightgray;">
   <div id="topbar"></div>
     <main>
-        <h1>Welcome to the Upload Page</h1>
+        <h1 class="simple-title">Upload</h1>
+        <div class="input-container">
+          <p class="input-text">File Upload: </p>
+          <div class="top-rectangle" onclick="document.getElementById('fileInput').click();">
+            Click to Upload
+          </div>
+          <input type="file" id="fileInput" class="file-input" />
+        </div>
+        <div class="input-container">
+          <p class="input-text">Program of Study:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" />
+        </div>
+        <div class="input-container">
+          <p class="input-text">Course:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 128px;" />
+        </div>
+        <div class="input-container">
+          <p class="input-text">Professor:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 100px;" />
+        </div>
+        <div class="input-container">
+          <p class="input-text">Description:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 80px;"/>
+        </div>
+        <div class="input-container">
+          <input type="checkbox" class="check"/>
+          <p style="font-size: 0.65cm;"> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity </a></p>
+        </div>
+        <div class="input-container">
+          <input type="checkbox" class="check"/>
+          <p style="font-size: 0.65cm;"> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines </a></p>
+        </div>
+        <div class="input-container">
+          <upload-button>Upload Notes</upload-button>
+        </div>
     </main>
-    <script src="index.js"></script>
   </body>
 </html>

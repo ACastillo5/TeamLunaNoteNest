@@ -63,9 +63,9 @@ hr {
 }
 
 .input-container {
-    display: flex; /* Align the text and rectangle horizontally */
-    align-items: center; /* Vertically align the text and rectangle */
-    margin-bottom: 20px; /* Add spacing between each line */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .input-text{

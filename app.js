@@ -45,6 +45,10 @@ app.get('/test', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/user/test.html'));
 });
 
+app.get('/bookmarks', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/user/bookmarks.html'));
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/index.html'));
 });

@@ -26,6 +26,7 @@ body {
     /* font-family: Arial, Helvetica, sans-serif; */
     font-family: 'Roboto Mono';
     background-color:whitesmoke;
+    /* background-color: bisque; */
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
@@ -43,7 +44,8 @@ body {
 
 .body-container {
     height: 100vh;
-    background-color: rgba(220, 222, 222, 0.85);
+    /* background-color: rgba(220, 222, 222, 0.85); */
+    background-color: rgba(220, 222, 222, 0.78);
     background-image: url(../images/unsplash-books.jpeg);
     background-size: cover;
     background-blend-mode: lighten;
@@ -86,7 +88,8 @@ hr {
     display: flex; /* Enable Flexbox */
     justify-content: space-between; /* Push items to the edges (left and right) */
     align-items: center; /* Vertically align items */
-    background-color: rgba(222, 219, 215, 0.815);
+    /* background-color: rgba(222, 219, 215, 0.815); */
+    background-color:peru;
     border-bottom: 2px solid black;
     padding: 20px;
     height: 80px;
@@ -132,6 +135,7 @@ button:hover, button:active,
     cursor: pointer;
     text-decoration: none;
     transform: translate(4px, 4px);
+    background-color: #505555;
     box-shadow: 0 0;
 }
 

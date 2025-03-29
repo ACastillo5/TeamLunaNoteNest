@@ -70,7 +70,6 @@
     display: none; /* Hide the default file input */
 }
 
-
 upload-button {
     margin-left: 1.5cm;
     padding: 20px 12cm;  
@@ -90,12 +89,13 @@ upload-button {
 upload-button:hover, upload-button:active {
     cursor: pointer;
     transform: translate(5px, 10px);
+    background-color: #5e6363;
     box-shadow: 0 0;
 }
 
-upload-button.active {
+/* upload-button.active {
     transform: translate(5px, 10px);
     box-shadow: 0 10px;
     background-color: black;
     color: white;
-}
+} */

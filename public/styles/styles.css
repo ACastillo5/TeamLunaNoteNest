@@ -130,8 +130,9 @@ a:not(.small-btn):not(.btn-primary):hover {
     background-color: darkgray;
 } */
 
-button:hover, button:active, 
-.btn-primary:hover, .btn-primary:active {
+button:not(.search-bubble):hover, button:not(.search-bubble):active, 
+.btn-primary:hover, .btn-primary:active 
+{
     cursor: pointer;
     text-decoration: none;
     transform: translate(4px, 4px);

@@ -5,63 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Note Preview</title>
-  <link rel="stylesheet" href="../../styles/styles.css">
-  <link rel="stylesheet" href="../../styles/thumbnails.css">
-  <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
-  <script src="/guestHead.js" defer></script>
-  <style>
-    body{
-      background-color: bisque;
-    }
-    h1{
-      text-align: center;
-      font-size: 4em;
-    }
-    p{
-      text-align: center;
-    }
-    a{
-      text-align: center;
-    }
-    .box{
-      margin: auto;
-      width: 42%;
-      height: 15%;
-      border: 3px solid black;
-      background-color: white;
-      padding: 5px;
-      text-align: center;
-      font-size: 2em;
-    }
-    .refer{
-      color: blue;
-      text-align: center;
-    }
-    .center {
-      margin: auto;
-      width: 10%;
-      border: 3px solid black;
-      background-color: white;
-      padding: 1px;
-      text-align: center;
-      font-size: 1.2em;
-    }
-  </style>
+  <title>Login</title>
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <link rel="stylesheet" href="/public/styles/forms.css">
+  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+  <script src="/public/guestHead.js" defer></script>
 </head>
+
 <body>
   <div id="topbar"></div>
   <main>
-    <h1>Login to Your Account</h1>
-    <p class="box">UNCC Email</p>
-    <br>
-    <p class="box">Password</p>
-    <br>
-    <p class="center">Log In</p>
-    <br>
-    <p>
-      <a href="/signup" class="refer"> Don't have an account? Sign up here!</a>
-    </p>
-  </main>    
+    <div class="form-body login">
+      <h1>Log in</h1>
+      <form action="/student-home" method="GET" class="form">
+        <input id="login-username" type="text" class="form-input" placeholder="Username" required>
+
+        <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+        <br>
+        <button type="submit" id="submit">Log In</button>
+        <p><a href="/signup" class="refer"> Don't have an account? Sign up here!</a></p>
+      </form>
+    </div>
+  </main>
 </body>
+
 </html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="/public/styles/styles.css">
+    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <style>
+        .some-page-wrapper {
+            margin: 15px;
+            background-color: red;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+        }
+
+        .left {
+            height: auto;
+            padding: 0;
+            flex: 0.35;
+        }
+
+        .left img {
+            width: 100%;
+        }
+
+        .right {
+            height: inherit;
+            line-height: 100%;
+            flex: 2;
+            padding: 20px;
+            vertical-align: middle;
+        }
+
+        button {
+            width: 20%;
+        }
+
+        .btn-container {
+            display: flex;
+        }
+
+        h4 {
+            color:firebrick;
+        }
+
+        @media screen and (max-width: 900px) {
+            .row {
+                display: block;
+            }
+            .right {
+                padding: 10px 0;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <p>TOPBAR IS TEMPORARILY HARD-CODED UNTIL WE FIGURE OUT HOW TO IMPLEMENT PROF VS STUDENT ACCOUNT DISTINCTION</p>
+    <div id="topbar">
+        <h1><a href="/">NoteNest<a></h1>
+        <div class="actions">
+            <a href="/search">Search Notes</a>
+            <a href="/bookmarks">Bookmarks</a>
+            <a href="#">Reports</a>
+            <!-- <a href="/profile">Profile</a>  -->
+            <!-- <img src="/public/images/circle.png" alt="User Icon" class="profile-icon">  -->
+        </div>
+    </div>
+    <main>
+        <br><br>
+        <h2>Reports sent in your course:</h2>
+        <br><hr>
+        <div class='row'>
+            <div class='left'>
+                <img src="../../public/images/placeholder.png">
+            </div>
+            <div class='column right'>
+                <h3>report title</h3>
+                <h4>name of rule violated</h4>
+                <br>
+                <p><strong>submitted by: </strong><a href="#">@username</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum provident laborum nihil eaque alias,
+                    quod molestias deserunt ad repellendus magni ipsa velit, eligendi earum vitae ex eos nobis.
+                    Mollitia, possimus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
+                    <br>
+                    <span class="btn-container">
+                    <button>Remove Note</button>
+                    <button>Appeal Note</button>
+                    </span>
+                </div>
+                <hr>
+        </div>
+
+        <div class='row'>
+            <div class='left'>
+                <img src="../../public/images/placeholder.png">
+            </div>
+            <div class='column right'>
+                <h3>report title</h3>
+                <h4>name of rule violated</h4>
+                <br>
+                <p><strong>submitted by: </strong><a href="#">@username</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum provident laborum nihil eaque alias,
+                    quod molestias deserunt ad repellendus magni ipsa velit, eligendi earum vitae ex eos nobis.
+                    Mollitia, possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente neque? Dolore in non exercitationem! Inventore natus culpa labore at repellendus eum adipisci repudiandae doloribus. Vitae unde corporis animi mollitia?</p>
+                    <br>
+                    <span class="btn-container">
+                    <button>Remove Note</button>
+                    <button>Appeal Note</button>
+                    </span>
+                </div>
+                <hr>
+
+        </div>
+    </main>
+</body>
+
+</html>

@@ -221,7 +221,6 @@ button, .btn-primary, .small-btn {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    padding: 0 4px;
     margin: 0 0 0 4cm;
 }
 
@@ -252,6 +251,7 @@ button, .btn-primary, .small-btn {
         display: block;
         margin: 0;
         padding: 15px;
+        background-color: aqua;
     }
     .about {
         display: block;

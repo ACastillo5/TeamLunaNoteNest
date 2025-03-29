@@ -5,6 +5,14 @@
     margin: 10px 0;
 }
 
+.row-home {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 4px;
+    margin: 10px 0;
+}
+
 .n-column {
     -ms-flex: 20%;
     flex: 20%;

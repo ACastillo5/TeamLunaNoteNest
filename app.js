@@ -33,11 +33,11 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/user/signup.html'));
 });
 
-app.get('/profHome', (req, res) => {
+app.get('/profHomePage', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/professor-home.html'));
 });
 
-app.get('/studentHome', (req, res) => {
+app.get('/studentHomePage', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/student-home.html'));
 });
 

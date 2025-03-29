@@ -41,6 +41,18 @@ app.get('/studentHomePage', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/student-home.html'));
 });
 
+app.get('/test', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/user/test.html'));
+});
+
+app.get('/bookmarks', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/user/bookmarks.html'));
+});
+
+app.get('/reports', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/notes/reports.html'));
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/index.html'));
 });

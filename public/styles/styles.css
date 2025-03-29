@@ -1,0 +1,275 @@
+/* roboto-mono-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../styles/roboto-mono-v23-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* dm-serif-display-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../styles/dm-serif-display-v15-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Roboto Mono';
+    background-color:whitesmoke;
+    /* background-color: bisque; */
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.body-container, .end-container {
+    width: 100vw;
+    padding: 25vh;
+
+    text-align: center;
+  
+    display:inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-container {
+    height: 100vh;
+    /* background-color: rgba(220, 222, 222, 0.85); */
+    background-color: rgba(220, 222, 222, 0.78);
+    background-image: url(../images/unsplash-books.jpeg);
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+.end-container {
+    height: 70vh;
+    background-color: rgba(220, 222, 222, 0.75);
+    background-image: url(../images/isorepublic-books.jpg);
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+.caption {
+    font-size: 3.5rem;
+    font-family: 'DM Serif Display', Arial, Helvetica, sans-serif;
+    font-weight: 200;
+}
+
+main {
+    margin: 0 11%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+hr {
+    border: solid 0.95px black;
+    /* width: 10rem;
+    margin: 5px auto; */
+    width: 100%;
+    margin: 7px 0;
+    background-color: black;
+}
+
+/* HEADERS */
+#topbar{
+    display: flex; /* Enable Flexbox */
+    justify-content: space-between; /* Push items to the edges (left and right) */
+    align-items: center; /* Vertically align items */
+    /* background-color: rgba(222, 219, 215, 0.815); */
+    background-color:peru;
+    border-bottom: 2px solid black;
+    padding: 20px;
+    height: 80px;
+}
+
+#topbar h1, #topbar a {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+}
+
+#topbar a {
+    transition-property: text-decoration, box-shadow, color;
+    transition-duration: 150ms;
+}
+
+a:not(.small-btn):not(.btn-primary) {
+    color: black;
+}
+
+a:not(.small-btn):not(.btn-primary):hover {
+    color: rgb(120, 100, 0);
+}
+
+
+/* BELOW IS FOR THE BUTTONS NEXT TO THE h1's */
+/* YOU CAN USE THIS BUT PLEASE ASK BEFORE EDITING/DELETING */
+
+.title { /* container div must go around for h1 and button */
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+/* button {
+    padding: 10px 35px;  
+    border: none;
+    background-color: darkgray;
+} */
+
+button:not(.search-bubble):hover, button:not(.search-bubble):active, 
+.btn-primary:hover, .btn-primary:active 
+{
+    cursor: pointer;
+    text-decoration: none;
+    transform: translate(4px, 4px);
+    background-color: #505555;
+    box-shadow: 0 0;
+}
+
+/* don't need to use the .active class if the button is a one-time click*/
+button.active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0;
+    background-color: black;
+    color: white;
+}
+
+button, .btn-primary, .small-btn {
+    box-shadow: 3px 5px 0 black;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-primary, .small-btn, button {
+    display: inline-block;
+    /* background-color: #686f5f; */
+    background-color: lightyellow;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    padding: 20px 50px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.small-btn, button {
+    padding: 15px 20px;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.btn-primary:hover, .btn-primary:active, 
+.small-btn:hover, .small-btn:active {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #505555;
+    box-shadow: 0 0;
+}
+
+/* END */
+
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.text-seperate{
+    font-size: 40px;
+    text-align: left;
+    padding-top: 2cm;
+    padding-left: 4cm;
+}
+
+.column-title, .text-seperate {
+    text-align: left;
+}
+
+.underline {
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+
+.n-column p {
+    font-size: large;
+}
+
+.row-home {    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 4px;
+    margin: 0 0 0 4cm;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    margin: 0 4cm;
+}
+
+.about img {
+    margin: 10px 20px 0 0;
+}
+
+/* responsive tags */
+@media screen and (max-width: 900px) {
+    #topbar{
+        display: block; 
+        height: auto;
+    }
+    .body-container {
+        padding: 10vh;
+        height: 85vh;
+    }
+    .end-container {
+        padding: 15vh;
+    }
+    .row-home {
+        display: block;
+        margin: 0;
+        padding: 15px;
+    }
+    .about {
+        display: block;
+        align-items: center;
+        margin: auto 1cm;
+    }
+    .about img {
+        align-self: center;
+        width: 100%;
+    }
+    .text-seperate{
+        padding-top: 0;
+        padding-left: 1cm;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        margin: 0 2%;
+    }
+}

@@ -1,6 +1,10 @@
 #mac-specific
 .DS_Store
 settings.json
+node_modules/
+compiled/
+/test/node_modules/
+test.html
 
 #incompatible filetypes
 *.mp*

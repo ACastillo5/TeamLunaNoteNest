@@ -6,15 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Note Preview</title>
-  <link rel="stylesheet" href="../../styles/styles.css">
-  <link rel="stylesheet" href="../../styles/thumbnails.css">
-  <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <link rel="stylesheet" href="/public/styles/upload.css">
+  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+  <script src="/public/accountHead.js" defer></script>
 </head>
 
-<body style="background-color: lightgray;">
+<body>
   <div id="topbar"></div>
     <main>
+      <br><br>
         <h1 class="simple-title">Upload</h1>
         <div class="input-container">
           <p class="input-text">File Upload: </p>
@@ -23,10 +24,10 @@
           </div>
           <input type="file" id="fileInput" class="file-input" />
         </div>
-        <div class="input-container">
+        <!-- <div class="input-container">
           <p class="input-text">Program of Study:</p>
           <input type="text" class="rectangle" placeholder="Enter text here" />
-        </div>
+        </div> -->
         <div class="input-container">
           <p class="input-text">Course:</p>
           <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 128px;" />
@@ -41,11 +42,11 @@
         </div>
         <div class="input-container">
           <input type="checkbox" class="check"/>
-          <p style="font-size: 0.65cm;"> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity </a></p>
+          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity </a></p>
         </div>
         <div class="input-container">
           <input type="checkbox" class="check"/>
-          <p style="font-size: 0.65cm;"> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines </a></p>
+          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines </a></p>
         </div>
         <div class="input-container">
           <upload-button>Upload Notes</upload-button>

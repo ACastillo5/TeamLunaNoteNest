@@ -1,0 +1,101 @@
+.simple-title {
+    text-align: left;
+    /* margin-top: 2cm;
+    margin-left: 2.25cm; */
+    /* font-size: 1.25cm; */
+
+    /* top right bottom left  */
+    margin: 1cm 0 0 4.5cm 
+}
+
+.input-container {
+    display: flex; /* Align the text and rectangle horizontally */
+    align-items: center; /* Vertically align the text and rectangle */
+    margin-bottom: 20px; /* Add spacing between each line */
+}
+
+.input-text{
+    text-align: left;
+    margin-top: 0.75cm;
+    margin-left: 4.5cm;
+    /* font-size: 25px; */
+}
+
+.rectangle, .top-rectangle {
+    margin-left: 16px;
+    margin-top: 10px;
+    width: 530px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.rectangle {
+    font-size: 0.4cm;
+}
+
+.top-rectangle {
+    /* 
+    margin-top: 30px;
+    width: 600px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.75cm;
+    justify-content: center;
+    align-items: center;
+    display: flex; */
+    margin-left: 80px;
+    cursor: pointer;
+}
+
+.check {
+    margin-left: 4.5cm;
+    width: 50px;
+    height: 50px;
+    accent-color: green; 
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.file-input {
+    display: none; /* Hide the default file input */
+}
+
+
+upload-button {
+    margin-left: 1.5cm;
+    padding: 20px 12cm;  
+    border-radius: 10px;
+    border: 1px solid;
+    /* font-size: 20px; */
+    display: inline-block;
+    text-align: center;
+    /* font-weight: bold; */
+    box-shadow: 2px 5px 0 black;
+    background-color: lightyellow;
+    border-color: #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+    white-space: nowrap;
+}
+
+upload-button:hover, upload-button:active {
+    cursor: pointer;
+    transform: translate(5px, 10px);
+    box-shadow: 0 0;
+}
+
+upload-button.active {
+    transform: translate(5px, 10px);
+    box-shadow: 0 10px;
+    background-color: black;
+    color: white;
+}

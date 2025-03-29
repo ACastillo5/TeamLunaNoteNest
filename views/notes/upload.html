@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Note Preview</title>
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <link rel="stylesheet" href="/public/styles/upload.css">
+  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+  <script src="/public/accountHead.js" defer></script>
+</head>
+
+<body>
+  <div id="topbar"></div>
     <main>
-        <h1>Welcome to the Upload Page</h1>
+      <br><br>
+        <h1 class="simple-title">Upload</h1>
+        <div class="input-container">
+          <p class="input-text">File Upload: </p>
+          <div class="top-rectangle" onclick="document.getElementById('fileInput').click();">
+            Click to Upload
+          </div>
+          <input type="file" id="fileInput" class="file-input" />
+        </div>
+        <!-- <div class="input-container">
+          <p class="input-text">Program of Study:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" />
+        </div> -->
+        <div class="input-container">
+          <p class="input-text">Course:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 128px;" />
+        </div>
+        <div class="input-container">
+          <p class="input-text">Professor:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 100px;" />
+        </div>
+        <div class="input-container">
+          <p class="input-text">Description:</p>
+          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 80px;"/>
+        </div>
+        <div class="input-container">
+          <input type="checkbox" class="check"/>
+          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity </a></p>
+        </div>
+        <div class="input-container">
+          <input type="checkbox" class="check"/>
+          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines </a></p>
+        </div>
+        <div class="input-container">
+          <upload-button>Upload Notes</upload-button>
+        </div>
     </main>
-    <script src="index.js"></script>
   </body>
 </html>

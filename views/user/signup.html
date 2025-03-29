@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Sign Up Page</h1>
-    </main>
-    <script src="index.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <link rel="stylesheet" href="/public/styles/forms.css">
+  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+  <script src="/public/accountHead.js" defer></script>
+
+</head>
+<body>
+  <div id="topbar"></div>
+  <main>
+  <div class="form-body signup">
+    <h1>Sign Up</h1>
+    <form action="" method="POST" class="form">
+      <input id="login-email" type="email" class="form-input" placeholder="UNCC Email" required>
+
+      <input id="login-username" type="text" class="form-input" placeholder="Username" required>
+
+      <input id="login-password" type="password" class="form-input" placeholder="Password" required>
+      <br>
+      <button type="submit" id="submit">Create student account</button>
+      <button type="submit" id="submit">Create professor account</button>
+
+      <p><a href="/login" class="refer"> Already have an account? Log in here!</a></p>
+    </form>
+  </div>
+  </main>
+  <!-- <main>
+    <form action="/url" method="GET">
+      <p>Create a new Account</p>
+      <input type="text" placeholder="UNCC Email">
+      <br>
+      <input type="text" placeholder="Password">
+      <br>
+      <input type="text" placeholder="Confirm Password">
+    </form>
+    <br>
+    <div class="center">
+      <button>Sign Up</button>
+    </div>
+    <br>
+    <p>
+      <a href="login.html" class="refer"> Don't have an account? Sign up here!</a>
+    </p>
+  </main> -->
+</body>
 </html>

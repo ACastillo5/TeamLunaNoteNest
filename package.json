@@ -1,0 +1,20 @@
+{
+  "name": "notenestproject",
+  "version": "1.0.0",
+  "description": "This project will be creating a database that can be used by current and previous students \r to upload or look at notes if they need help understanding material. Professors will also be\r able to use this to manage notes by being able to delete notes if they deem it violating \r any Academic Integrity rules",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

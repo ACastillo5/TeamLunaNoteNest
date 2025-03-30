@@ -251,7 +251,6 @@ button, .btn-primary, .small-btn {
         display: block;
         margin: 0;
         padding: 15px;
-        background-color: aqua;
     }
     .about {
         display: block;
@@ -262,10 +261,16 @@ button, .btn-primary, .small-btn {
         align-self: center;
         width: 100%;
     }
-    .text-seperate{
+    .text-seperate {
         padding-top: 0;
         padding-left: 1cm;
     }
+    .title {
+        display: block;
+    }
+    /* button {
+        width: 100%;
+    } */
 }
 
 @media screen and (max-width: 600px) {

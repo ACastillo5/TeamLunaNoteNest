@@ -71,7 +71,7 @@
 </head>
 
 <body>
-    <p>TOPBAR IS TEMPORARILY HARD-CODED UNTIL WE FIGURE OUT HOW TO IMPLEMENT PROF VS STUDENT ACCOUNT DISTINCTION</p>
+    <!-- <p>TOPBAR IS TEMPORARILY HARD-CODED UNTIL WE FIGURE OUT HOW TO IMPLEMENT PROF VS STUDENT ACCOUNT DISTINCTION</p> -->
     <div id="topbar">
         <h1><a href="/">NoteNest<a></h1>
         <div class="actions">
@@ -86,9 +86,9 @@
         <br><br>
         <h2>Reports sent in your course:</h2>
         <br><hr>
-        <div class='row'>
+        <div class="row hide">
             <div class='left'>
-                <img src="../../public/images/placeholder.png">
+                <a href="/preview"><img src="../../public/images/placeholder.png"></a>
             </div>
             <div class='column right'>
                 <h3>report title</h3>
@@ -100,8 +100,8 @@
                     Mollitia, possimus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. </p>
                     <br>
                     <span class="btn-container">
-                    <button>Remove Note</button>
-                    <button>Appeal Note</button>
+                    <button onclick="hideDiv()">Remove Note</button>
+                    <button onclick="hideDiv()">Appeal Note</button>
                     </span>
                 </div>
                 <hr>
@@ -109,7 +109,7 @@
 
         <div class='row'>
             <div class='left'>
-                <img src="../../public/images/placeholder.png">
+                <a href="/preview"><img src="../../public/images/placeholder.png"></a>
             </div>
             <div class='column right'>
                 <h3>report title</h3>
@@ -121,14 +121,19 @@
                     Mollitia, possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, sapiente neque? Dolore in non exercitationem! Inventore natus culpa labore at repellendus eum adipisci repudiandae doloribus. Vitae unde corporis animi mollitia?</p>
                     <br>
                     <span class="btn-container">
-                    <button>Remove Note</button>
-                    <button>Appeal Note</button>
+                    <button onclick="hideDiv()">Remove Note</button>
+                    <button onclick="hideDiv()">Appeal Note</button>
                     </span>
                 </div>
                 <hr>
-
         </div>
     </main>
+    <script>
+        function hideDiv() {
+          var div = document.querySelector(".hide");
+          div.style.display = "none";
+        }
+    </script>
 </body>
 
 </html>

@@ -12,6 +12,7 @@
   <script src="/public/accountHead.js" defer></script>
 </head>
 
+<!-- https://pypi.org/project/preview-generator/0.2.2/ -->
 <body>
   <div id="topbar"></div>
     <!-- insert nav dynamically here -->
@@ -56,17 +57,17 @@
         <hr>
         <p><strong>PROF NAME</strong></p>
         <br>
-        <p><i>AUTHOR NAME</i></p>
+        <p><a href="/profile">AUTHOR NAME</a></p>
         <br>
         <p>FILE DETAILS HERE</p>
         <br>
 
       </div>
       <div class="right">
-        <div class="title">
-          <h1>NOTE_TITLE.pdf</h1>
-          <button id="byclass">DOWNLOAD</button>
-        </div>
+          <h1>note_title.pdf</h1>
+          <button>Download</button>        
+          <button>Bookmark</button>        
+          <button>Report</button>
         <br>
         <div class="document">
           <img src="/public/images/placeholder.png" id="1">
@@ -81,7 +82,9 @@
           <p>3</p>
         </a>
         <br>
-        <button>DOWNLOAD</button>
+        <button>Download</button>
+        <button>Bookmark</button>        
+        <button>Report</button>
       </div>
     </div>
   </main>

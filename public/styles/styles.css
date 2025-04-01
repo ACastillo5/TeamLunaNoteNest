@@ -20,11 +20,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto Mono';
 }
 
 body {
     /* font-family: Arial, Helvetica, sans-serif; */
-    font-family: 'Roboto Mono';
     background-color:whitesmoke;
     /* background-color: bisque; */
     display: grid;
@@ -113,7 +113,6 @@ a:not(.small-btn):not(.btn-primary) {
 a:not(.small-btn):not(.btn-primary):hover {
     color: rgb(120, 100, 0);
 }
-
 
 /* BELOW IS FOR THE BUTTONS NEXT TO THE h1's */
 /* YOU CAN USE THIS BUT PLEASE ASK BEFORE EDITING/DELETING */
@@ -251,7 +250,6 @@ button, .btn-primary, .small-btn {
         display: block;
         margin: 0;
         padding: 15px;
-        background-color: aqua;
     }
     .about {
         display: block;
@@ -262,10 +260,16 @@ button, .btn-primary, .small-btn {
         align-self: center;
         width: 100%;
     }
-    .text-seperate{
+    .text-seperate {
         padding-top: 0;
         padding-left: 1cm;
     }
+    .title {
+        display: block;
+    }
+    /* button {
+        width: 100%;
+    } */
 }
 
 @media screen and (max-width: 600px) {

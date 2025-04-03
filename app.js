@@ -1,10 +1,21 @@
 const express = require("express");
 const path = require("path");
+const uploadWithMongoDB = require('./models/upload');
 
 const app = express();
 const PORT = 3000;
 
 app.set('view engine', 'ejs');
+
+app.post('/upload', (req, res) => {
+  uploadWithMongoDB(req, res, (err) => {
+    if (err) {
+      return res.status(400).send(err.message);
+    }
+    // Redirect back to the upload page with a success flag
+    res.redirect('/upload?success=true');
+  });
+});
 
 // Serve static files (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname)));

@@ -233,6 +233,14 @@ button, .btn-primary, .small-btn {
     margin: 10px 20px 0 0;
 }
 
+.success {
+    display: none;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
 /* responsive tags */
 @media screen and (max-width: 900px) {
     #topbar{

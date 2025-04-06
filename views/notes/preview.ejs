@@ -6,16 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Note Preview</title>
-  <link rel="stylesheet" href="/public/styles/styles.css">
-  <link rel="stylesheet" href="/public/styles/preview-page.css">
-  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
-  <script src="/public/accountHead.js" defer></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/preview-page.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <script src="/accountHead.js" defer></script>
 </head>
 
 <!-- https://pypi.org/project/preview-generator/0.2.2/ -->
 <body>
-  <div id="topbar"></div>
-    <!-- insert nav dynamically here -->
+  <%- include('../partials/header.ejs')%>
   <main>
     <br>
     <div class="p-container">
@@ -70,15 +69,15 @@
           <button>Report</button>
         <br>
         <div class="document">
-          <img src="/public/images/placeholder.png" id="1">
+          <img src="/images/placeholder.png" id="1">
           <p>1</p>
         </a>
         <div class="document">
-          <img src="/public/images/placeholder.png" id="2">
+          <img src="/images/placeholder.png" id="2">
           <p>2</p>
         </a>
         <div class="document">
-          <img src="/public/images/placeholder.png" id="3">
+          <img src="/images/placeholder.png" id="3">
           <p>3</p>
         </a>
         <br>

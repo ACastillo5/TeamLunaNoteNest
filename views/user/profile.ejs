@@ -6,56 +6,56 @@
   <meta name="viewport" gallery="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" gallery="ie=edge">
   <title>Profile</title>
-  <link rel="stylesheet" href="/public/styles/styles.css">
-  <link rel="stylesheet" href="/public/styles/thumbnails.css">
-  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
-  <script src="/public/accountHead.js" defer></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/thumbnails.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <script src="/accountHead.js" defer></script>
 </head>
 
 <body>
-  <div id="topbar"></div>
+  <%- include('../partials/header.ejs')%>
   <main>
     <br>
     <div class="title">
-      <h1>@Username's Profile</h1>
+      <h1><%= user.firstname + " " + user.lastname %>'s Profile</h1>
       <button id="byclass">By Class</button>
       <button id="seeall">See All</button>
     </div>
     <br><hr><br>
-    <h2>Username has submitted these notes:</h2>
+    <h2><%= user.firstname %> has submitted these notes:</h2>
     <div class="row">
       <div class="n-column">
-        <a href=/preview><img src="/public/images/placeholder.png"></a>
+        <a href=/notes/preview><img src="/images/placeholder.png"></a>
         <h3>TITLE</h3>
         <p><strong>class name</strong></p>
         <p>description lorem ipsum dolor sit amet consiour.</p>
       </div>
       <div class="n-column">
-        <a href=/preview><img src="/public/images/placeholder.png"></a>
+        <a href=/notes/preview><img src="/images/placeholder.png"></a>
         <h3>TITLE</h3>
         <p><strong>class name</strong></p>
         <p>description lorem ipsum dolor sit amet consiour.</p>
       </div>
       <div class="n-column">
-        <a href=/preview><img src="/public/images/placeholder.png"></a>
+        <a href=/notes/preview><img src="/images/placeholder.png"></a>
         <h3>TITLE</h3>
         <p><strong>class name</strong></p>
         <p>description lorem ipsum dolor sit amet consiour.</p>
       </div>
       <div class="n-column">
-        <a href=/preview><img src="/public/images/placeholder.png"></a>
+        <a href=/notes/preview><img src="/images/placeholder.png"></a>
         <h3>TITLE</h3>
         <p><strong>class name</strong></p>
         <p>description lorem ipsum dolor sit amet consiour.</p>
       </div>
       <div class="n-column">
-        <a href=/preview><img src="/public/images/placeholder.png"></a>
+        <a href=/notes/preview><img src="/images/placeholder.png"></a>
         <h3>TITLE</h3>
         <p><strong>class name</strong></p>
         <p>description lorem ipsum dolor sit amet consiour.</p>
       </div>
       <div class="n-column">
-        <a href=/preview><img src="/public/images/placeholder.png"></a>
+        <a href=/notes/preview><img src="/images/placeholder.png"></a>
         <h3>TITLE</h3>
         <p><strong>class name</strong></p>
         <p>description lorem ipsum dolor sit amet consiour.</p>
@@ -63,7 +63,6 @@
     </div>
 
   </main>
-  <script src="index.js"></script>
   <script>
     // !!!!!! THIS IS TEMPORARY CODE !!!!!!
     // TO BE REPLACED WITH DYNAMICALLY-LOADING NOTES
@@ -84,7 +83,7 @@
         if (!fColumn) {
           fColumn = document.createElement("div");
           fColumn.className = "f-column";
-          fColumn.innerHTML = `<img src="/public/images/folder-icon.png"> <p><strong>class name</strong></p>`;
+          fColumn.innerHTML = `<img src="/images/folder-icon.png"> <p><strong>class name</strong></p>`;
           document.querySelector(".row").appendChild(fColumn);
         }
 

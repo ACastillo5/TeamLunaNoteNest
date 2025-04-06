@@ -6,24 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Login</title>
-  <link rel="stylesheet" href="/public/styles/styles.css">
-  <link rel="stylesheet" href="/public/styles/forms.css">
-  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
-  <script src="/public/guestHead.js" defer></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/forms.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-  <div id="topbar"></div>
+  <%- include('../partials/header.ejs')%>
   <main>
     <div class="form-body login">
       <h1>Log in</h1>
-      <form action="/student-home" method="GET" class="form">
-        <input id="login-username" type="text" class="form-input" placeholder="Username" required>
+      <form action="/user/login" method="POST" class="form">
+        <input id="login-email" type="email" name="email" class="form-input" placeholder="UNCC email" required>
 
-        <input id="login-password" type="password" class="form-input" placeholder="Password" required>
-        <br>
+        <input id="login-password" type="password" name="password" class="form-input" placeholder="Password" required>
+        <br><br>
         <button type="submit" id="submit">Log In</button>
-        <p><a href="/signup" class="refer"> Don't have an account? Sign up here!</a></p>
+        <p><a href="/user/signup" class="refer"> Don't have an account? Sign up here!</a></p>
       </form>
     </div>
   </main>

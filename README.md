@@ -36,3 +36,7 @@ integrity rules
     - In terminal, run: `npx nodemon app`
 - Open your browser and type in `localhost:3000` 
     - You should be able to see the website
+- To run database
+    - Install MongoDB: https://www.mongodb.com/try/download/community
+    - Open MongoDB Compass and start a new connection and at the end of the url connection add: "NoteNest"
+        - Once running, to see new database items, press 'Refresh' at top right of window

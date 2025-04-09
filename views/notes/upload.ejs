@@ -9,63 +9,11 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/upload.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
+  <script src="/public/accountHead.js" defer></script>
 </head>
 
 <body>
   <%- include('../partials/header.ejs')%>
-    <main>
-      <br><br>
-        <h1 class="simple-title">Upload</h1>
-        <div class="input-container">
-          <p class="input-text">File Upload: </p>
-          <div class="top-rectangle" onclick="document.getElementById('fileInput').click();">
-            Click to Upload
-          </div>
-          <input type="file" id="fileInput" class="file-input" />
-        </div>
-        <!-- <div class="input-container">
-          <p class="input-text">Program of Study:</p>
-          <input type="text" class="rectangle" placeholder="Enter text here" />
-        </div> -->
-        <div class="input-container">
-          <p class="input-text">Course:</p>
-            <span class="tooltip">
-              ?
-              <span class="tooltip-text">Enter the official course name (e.g., "Intro to Computer Science I").</span>
-            </span>
-          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 105px;" />
-        </div>
-        <div class="input-container">
-          <p class="input-text">Professor:</p>
-            <span class="tooltip">
-              ?
-              <span class="tooltip-text">Enter ONLY the last name of the professor (e.g., "John").</span>
-            </span>
-          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 76px;" />
-        </div>
-        <div class="input-container">
-          <p class="input-text">Description:</p>
-            <span class="tooltip">
-              ?
-              <span class="tooltip-text">Enter a description of your notes (e.g., "All units except for 5").</span>
-            </span>
-          <input type="text" class="rectangle" placeholder="Enter text here" style="margin-left: 56px;"/>
-        </div>
-        <div class="input-container">
-          <input type="checkbox" class="check"/>
-          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity </a></p>
-        </div>
-        <div class="input-container">
-          <input type="checkbox" class="check"/>
-          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines </a></p>
-        </div>
-        <div class="input-container">
-          <upload-button>Upload Notes</upload-button>
-        </div>
-    </main>
-  </body>
-  <div id="topbar"></div>
   <main>
     <br><br>
     <div id="successMessage" class="success" style="display: none;">
@@ -83,15 +31,27 @@
       </div>
       <div class="input-container">
         <p class="input-text">Course:</p>
-        <input type="text" class="rectangle" placeholder="Enter text here" name="course" id="course" style="margin-left: 128px;" />
+          <span class="tooltip">
+            ?
+            <span class="tooltip-text">Enter the official course name (e.g., "Intro to Computer Science I").</span>
+          </span>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="course" id="course" style="margin-left: 105px;" />
       </div>
       <div class="input-container">
         <p class="input-text">Professor:</p>
-        <input type="text" class="rectangle" placeholder="Enter text here" name="professor" id="professor" style="margin-left: 100px;" />
+          <span class="tooltip">
+            ?
+            <span class="tooltip-text">Enter ONLY the last name of the professor (e.g., "John").</span>
+          </span>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="professor" id="professor" style="margin-left: 76px;" />
       </div>
       <div class="input-container">
         <p class="input-text">Description:</p>
-        <input type="text" class="rectangle" placeholder="Enter text here" name="description" id="description" style="margin-left: 80px;" />
+          <span class="tooltip">
+            ?
+            <span class="tooltip-text">Enter a description of your notes (e.g., "All units except for 5").</span>
+          </span>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="description" id="description" style="margin-left: 56px;" />
       </div>
       <div class="input-container">
         <input type="checkbox" class="check" id="academicIntegrity" />

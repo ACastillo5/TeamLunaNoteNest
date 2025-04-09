@@ -14,65 +14,123 @@
 
 <body>
   <div id="topbar"></div>
-    <main>
-      <br><br>
-      <div id="successMessage" class="success">
-        Notes uploaded successfully!
+  <main>
+    <br><br>
+    <div id="successMessage" class="success" style="display: none;">
+      Notes uploaded successfully!
+    </div>
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+    <h1 class="simple-title">Upload</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <div class="input-container">
+        <p class="input-text">File Upload:</p>
+        <div id="topRectangle" class="top-rectangle" onclick="document.getElementById('fileInput').click();">
+          Click to Upload
+        </div>
+        <input type="file" id="fileInput" class="file-input" name="noteFile" />
       </div>
-      <h1 class="simple-title">Upload</h1>
-      <form action="/upload" method="POST" enctype="multipart/form-data">
-        <div class="input-container">
-          <p class="input-text">File Upload:</p>
-          <div id="topRectangle" class="top-rectangle" onclick="document.getElementById('fileInput').click();">
-            Click to Upload
-          </div>
-          <input type="file" id="fileInput" class="file-input" name="noteFile" />
-        </div>
-        <!-- <div class="input-container">
-          <p class="input-text">Program of Study:</p>
-          <input type="text" class="rectangle" placeholder="Enter text here" />
-        </div> -->
-        <div class="input-container">
-          <p class="input-text">Course:</p>
-          <input type="text" class="rectangle" placeholder="Enter text here" name="course" style="margin-left: 128px;" />
-        </div>
-        <div class="input-container">
-          <p class="input-text">Professor:</p>
-          <input type="text" class="rectangle" placeholder="Enter text here" name="professor" style="margin-left: 100px;" />
-        </div>
-        <div class="input-container">
-          <p class="input-text">Description:</p>
-          <input type="text" class="rectangle" placeholder="Enter text here" name="description" style="margin-left: 80px;"/>
-        </div>
-        <div class="input-container">
-          <input type="checkbox" class="check"/>
-          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity </a></p>
-        </div>
-        <div class="input-container">
-          <input type="checkbox" class="check"/>
-          <p> I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines </a></p>
-        </div>
-        <div class="input-container">
-          <upload-button id="uploadButton">Upload Notes</upload-button>
-        </div>
-      </form>
-      <script>
-        document.getElementById('fileInput').addEventListener('change', function () {
-          const fileName = this.files[0] ? this.files[0].name : 'Click to Upload';
-          document.getElementById('topRectangle').textContent = fileName;
-        });
+      <div class="input-container">
+        <p class="input-text">Course:</p>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="course" id="course" style="margin-left: 128px;" />
+      </div>
+      <div class="input-container">
+        <p class="input-text">Professor:</p>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="professor" id="professor" style="margin-left: 100px;" />
+      </div>
+      <div class="input-container">
+        <p class="input-text">Description:</p>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="description" id="description" style="margin-left: 80px;" />
+      </div>
+      <div class="input-container">
+        <input type="checkbox" class="check" id="academicIntegrity" />
+        <p>I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity</a></p>
+      </div>
+      <div class="input-container">
+        <input type="checkbox" class="check" id="guidelines" />
+        <p>I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines</a></p>
+      </div>
+      <div class="input-container">
+        <upload-button id="uploadButton">Upload Notes</upload-button>
+      </div>
+    </form>
+    <script>
+      document.getElementById('fileInput').addEventListener('change', function () {
+        const fileName = this.files[0] ? this.files[0].name : 'Click to Upload';
+        document.getElementById('topRectangle').textContent = fileName;
+      });
 
-        // Trigger form submission when the upload button is clicked
-        document.getElementById('uploadButton').addEventListener('click', function () {
-          document.querySelector('form').submit();
-        });
-
-        // Check for the success flag in the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-          document.getElementById('successMessage').style.display = 'block';
+      // Trigger form submission when the upload button is clicked
+      document.getElementById('uploadButton').addEventListener('click', function (event) {
+        if (validateForm()) {
+          document.querySelector('form').submit(); // Explicitly submit the form
+        } else {
+          event.preventDefault(); // Prevent form submission if validation fails
         }
-      </script>
-    </main>
-  </body>
+      });
+
+      // Validation function
+      function validateForm() {
+        const fileInput = document.getElementById('fileInput');
+        const course = document.getElementById('course').value.trim();
+        const professor = document.getElementById('professor').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const academicIntegrity = document.getElementById('academicIntegrity').checked;
+        const guidelines = document.getElementById('guidelines').checked;
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Clear previous error message
+        errorMessage.style.display = 'none';
+        errorMessage.textContent = '';
+        successMessage.style.display = 'none';
+
+        if (!fileInput.files.length) {
+          errorMessage.textContent = 'Please upload a file.';
+          errorMessage.style.display = 'block';
+          urlParams.get('success') = 'false'
+          return false;
+        }
+        if (!course) {
+          errorMessage.textContent = 'Please enter the course name.';
+          errorMessage.style.display = 'block';
+          return false;
+        }
+        if (!professor) {
+          errorMessage.textContent = 'Please enter the professor name.';
+          errorMessage.style.display = 'block';
+          return false;
+        }
+        if (!description) {
+          errorMessage.textContent = 'Please enter a description.';
+          errorMessage.style.display = 'block';
+          return false;
+        }
+        if (!academicIntegrity) {
+          errorMessage.textContent = 'You must confirm the UNCC Code of Academic Integrity.';
+          errorMessage.style.display = 'block';
+          return false;
+        }
+        if (!guidelines) {
+          errorMessage.textContent = 'You must confirm the NoteNest Guidelines.';
+          errorMessage.style.display = 'block';
+          return false;
+        }
+
+        return true;
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === 'true') {
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Only show the success message if there are no validation errors
+        if (errorMessage.style.display === 'none') {
+          successMessage.style.display = 'block';
+        }
+      }
+
+    </script>
+  </main>
+</body>
+
 </html>

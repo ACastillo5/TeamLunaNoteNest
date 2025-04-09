@@ -305,6 +305,13 @@ button, .btn-primary, .small-btn {
     opacity: 1;
   }
 
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
 /* responsive tags */
 @media screen and (max-width: 900px) {
     #topbar{

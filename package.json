@@ -20,6 +20,7 @@
     "connect-mongo": "^5.1.0",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+<<<<<<< HEAD
     "express-rate-limit": "^7.5.0",
     "express-session": "^1.18.1",
     "express-validator": "^7.2.1",
@@ -27,5 +28,9 @@
     "mongoose": "^8.13.2",
     "morgan": "^1.10.0",
     "path": "^0.12.7"
+=======
+    "mongoose": "^8.13.1",
+    "multer": "^1.4.5-lts.2"
+>>>>>>> 8a4b860c39b33017cb295bf3b7c0aec5721bdc06
   }
 }

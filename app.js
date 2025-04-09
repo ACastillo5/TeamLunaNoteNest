@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo');
 const flash = require('connect-flash'); // show error messages
 const bcrypt = require('bcrypt'); // password hasher
 const session = require('express-session'); // store session ID
+const uploadWithMongoDB = require('./models/upload');
 
 const userRoutes = require('./routes/userRoutes');
 // const noteRoutes = require('./routes/noteRoutes');
@@ -65,6 +66,18 @@ app.use((req, res, next) => {
 
 //set up routes 
 const { isLoggedIn } = require('./middlewares/auth');
+app.post('/upload', (req, res) => {
+  uploadWithMongoDB(req, res, (err) => {
+    if (err) {
+      return res.status(400).send(err.message);
+    }
+    // Redirect back to the upload page with a success flag
+    res.redirect('/upload?success=true');
+  });
+});
+
+// Serve static files (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
   if (req.session.user && !req.body.prof) {

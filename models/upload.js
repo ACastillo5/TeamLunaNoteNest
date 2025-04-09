@@ -4,11 +4,6 @@ const path = require('path');
 const fs = require('fs');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/NoteNest', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
 const File = mongoose.model('File', new mongoose.Schema({
     fieldname: String,
     filename: String,

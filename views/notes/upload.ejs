@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/upload.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
+  <script src="/public/accountHead.js" defer></script>
 </head>
 
 <body>
@@ -31,15 +31,27 @@
       </div>
       <div class="input-container">
         <p class="input-text">Course:</p>
-        <input type="text" class="rectangle" placeholder="Enter text here" name="course" id="course" style="margin-left: 128px;" />
+          <span class="tooltip">
+            ?
+            <span class="tooltip-text">Enter the official course name (e.g., "Intro to Computer Science I").</span>
+          </span>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="course" id="course" style="margin-left: 105px;" />
       </div>
       <div class="input-container">
         <p class="input-text">Professor:</p>
-        <input type="text" class="rectangle" placeholder="Enter text here" name="professor" id="professor" style="margin-left: 100px;" />
+          <span class="tooltip">
+            ?
+            <span class="tooltip-text">Enter ONLY the last name of the professor (e.g., "John").</span>
+          </span>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="professor" id="professor" style="margin-left: 76px;" />
       </div>
       <div class="input-container">
         <p class="input-text">Description:</p>
-        <input type="text" class="rectangle" placeholder="Enter text here" name="description" id="description" style="margin-left: 80px;" />
+          <span class="tooltip">
+            ?
+            <span class="tooltip-text">Enter a description of your notes (e.g., "All units except for 5").</span>
+          </span>
+        <input type="text" class="rectangle" placeholder="Enter text here" name="description" id="description" style="margin-left: 56px;" />
       </div>
       <div class="input-container">
         <input type="checkbox" class="check" id="academicIntegrity" />

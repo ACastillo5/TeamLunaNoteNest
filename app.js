@@ -20,15 +20,17 @@ const HOST = "localhost";
 // Set up view engine
 app.set("view engine", "ejs");
 
-app.post('/upload', (req, res) => {
 // MongoDB connection
 const mongoUri = 'mongodb://localhost:27017/NoteNest';
-mongoose
-  .connect(mongoUri)
+mongoose.connect(mongUri)
   .then(() => {
-    console.log("MongoDB connected");
+    app.listen(port, host, () => {
+      console.log("Server is running on port", port);
+      console.log("MongoDB connected");
+    });
   })
-  .catch((err) => console.log("MongoDB connection error:", err.message));
+  .catch(err => console.log(err.message))
+
 
 // Middleware
 app.use(express.static("public"));

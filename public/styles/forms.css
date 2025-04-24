@@ -4,13 +4,13 @@ input[type=email] {
     width: 100%;
     padding: 12px 5px;
     margin-top: 15px;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     border: 1px solid black;
     align-self: center;
 }
 
 .form-body {
-    width: 30%;
+    width: 35%;
     align-items: baseline;
 }
 
@@ -19,7 +19,19 @@ input[type=email] {
 }
 
 .signup {
-    margin: 20vh auto;
+    margin: 16vh auto;
+}
+
+.half {
+    display: inline-flex;
+}
+
+.half input:nth-child(1), .half button:nth-child(1) {
+    margin-right: 5px;
+}
+
+.half input, .half button {
+    flex-grow: 1;
 }
 
 .form-body h1 {

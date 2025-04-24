@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" gallery="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" gallery="ie=edge">
+  <title>Error</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <%- include('partials/header.ejs')%>
+  <main>
+    <br>
+    <h2 style="color: firebrick;"><%= error.status%> Error</h2>
+    <p><%= error.message%></p>
+
+  </main>
+</body>
+
+</html>

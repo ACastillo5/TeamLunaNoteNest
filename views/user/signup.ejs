@@ -6,48 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sign up</title>
-  <link rel="stylesheet" href="/public/styles/styles.css">
-  <link rel="stylesheet" href="/public/styles/forms.css">
-  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
-  <script src="/public/guestHead.js" defer></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/forms.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
 </head>
 <body>
-  <div id="topbar"></div>
+  <%- include('../partials/header.ejs')%>
   <main>
   <div class="form-body signup">
     <h1>Sign Up</h1>
-    <form action="" method="POST" class="form">
-      <input id="login-email" type="email" class="form-input" placeholder="UNCC Email" required>
-
-      <input id="login-username" type="text" class="form-input" placeholder="Username" required>
-
-      <input id="login-password" type="password" class="form-input" placeholder="Password" required>
-      <br>
-      <button type="submit" id="submit">Create student account</button>
-      <button type="submit" id="submit">Create professor account</button>
-
-      <p><a href="/login" class="refer"> Already have an account? Log in here!</a></p>
+    <form action="/user/signup" method="POST">
+      <div class="half">
+        <input id="firstname" name="firstname" type="text" class="form-input" placeholder="First name" required>
+        <input id="lastname" name="lastname" type="text" class="form-input" placeholder="Last name" required>
+      </div>
+      <input id="email" name="email" type="email" class="form-input" placeholder="UNCC Email" required>
+      <input id="password" name="password" type="password" class="form-input" placeholder="Password" minlength="6" maxlength="64" required>
+      <br><br>
+      <div class="half">
+        <button type="submit" name="submitType" value="student" id="submit">Create student account</button>
+        <button type="submit" name="submitType" value="professor" id="submit">Create professor account</button>
+      </div>
+      <p><a href="/user/login" class="refer"> Already have an account? Log in here!</a></p>
     </form>
   </div>
   </main>
-  <!-- <main>
-    <form action="/url" method="GET">
-      <p>Create a new Account</p>
-      <input type="text" placeholder="UNCC Email">
-      <br>
-      <input type="text" placeholder="Password">
-      <br>
-      <input type="text" placeholder="Confirm Password">
-    </form>
-    <br>
-    <div class="center">
-      <button>Sign Up</button>
-    </div>
-    <br>
-    <p>
-      <a href="/login" class="refer"> Don't have an account? Sign up here!</a>
-    </p>
-  </main> -->
 </body>
 </html>

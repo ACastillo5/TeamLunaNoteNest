@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Search</title>
-  <link rel="stylesheet" href="/public/styles/styles.css">
-  <link rel="stylesheet" href="/public/styles/preview-page.css">
-  <link rel="stylesheet" href="/public/styles/thumbnails.css">
-  <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
-  <script src="/public/accountHead.js" defer></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/notes/preview-page.css">
+  <link rel="stylesheet" href="/styles/thumbnails.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <script src="/accountHead.js" defer></script>
   <style>
 
     form {
@@ -46,7 +46,7 @@
   </style>
 </head>
   <body>
-    <div id="topbar"></div>
+    <%- include('../partials/header.ejs')%>
     <main>
         <br><br>
         <form id="form" role="search">
@@ -63,37 +63,37 @@
         <h2>Results for "_"</h2>
         <div class="row">
           <div class="n-column">
-            <a href="/preview"><img src="/public/images/placeholder.png"></a>
+            <a href="/notes/preview"><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="n-column">
-            <a href="/preview"><img src="/public/images/placeholder.png"></a>
+            <a href="/notes/preview"><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="n-column">
-            <a href="/preview"><img src="/public/images/placeholder.png"></a>
+            <a href="/notes/preview"><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="n-column">
-            <a href="/preview"><img src="/public/images/placeholder.png"></a>
+            <a href="/notes/preview"><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="n-column">
-            <a href="/preview"><img src="/public/images/placeholder.png"></a>
+            <a href="/notes/preview"><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div class="n-column">
-            <a href="/preview"><img src="/public/images/placeholder.png"></a>
+            <a href="/notes/preview"><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>

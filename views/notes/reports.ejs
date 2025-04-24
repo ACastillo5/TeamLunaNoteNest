@@ -5,14 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports</title>
-    <link rel="stylesheet" href="/public/styles/styles.css">
-    <link rel="icon" href="/public/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <style>
-        .some-page-wrapper {
-            margin: 15px;
-            background-color: red;
-        }
-
         .row {
             display: flex;
             flex-direction: row;
@@ -71,24 +66,14 @@
 </head>
 
 <body>
-    <!-- <p>TOPBAR IS TEMPORARILY HARD-CODED UNTIL WE FIGURE OUT HOW TO IMPLEMENT PROF VS STUDENT ACCOUNT DISTINCTION</p> -->
-    <div id="topbar">
-        <h1><a href="/">NoteNest<a></h1>
-        <div class="actions">
-            <a href="/search">Search Notes</a>
-            <a href="/bookmarks">Bookmarks</a>
-            <a href="#">Reports</a>
-            <!-- <a href="/profile">Profile</a>  -->
-            <!-- <img src="/public/images/circle.png" alt="User Icon" class="profile-icon">  -->
-        </div>
-    </div>
+    <%- include('../partials/header.ejs')%>
     <main>
         <br><br>
         <h2>Reports sent in your course:</h2>
         <br><hr>
         <div class="row hide">
             <div class='left'>
-                <a href="/preview"><img src="../../public/images/placeholder.png"></a>
+                <a href="/notes/preview"><img src="../../images/placeholder.png"></a>
             </div>
             <div class='column right'>
                 <h3>report title</h3>
@@ -109,7 +94,7 @@
 
         <div class='row'>
             <div class='left'>
-                <a href="/preview"><img src="../../public/images/placeholder.png"></a>
+                <a href="/notes/preview"><img src="../../images/placeholder.png"></a>
             </div>
             <div class='column right'>
                 <h3>report title</h3>

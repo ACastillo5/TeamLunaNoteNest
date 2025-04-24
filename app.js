@@ -22,15 +22,12 @@ app.set("view engine", "ejs");
 
 // MongoDB connection
 const mongoUri = 'mongodb://localhost:27017/NoteNest';
-mongoose.connect(mongUri)
+mongoose
+  .connect(mongoUri)
   .then(() => {
-    app.listen(port, host, () => {
-      console.log("Server is running on port", port);
-      console.log("MongoDB connected");
-    });
+    console.log("MongoDB connected");
   })
-  .catch(err => console.log(err.message))
-
+  .catch((err) => console.log("MongoDB connection error:", err.message));
 
 // Middleware
 app.use(express.static("public"));
@@ -69,70 +66,11 @@ app.post("/upload", (req, res) => {
     if (err) {
       return res.status(400).send(err.message);
     }
-    // Redirect back to the upload page with a success flag
     res.redirect("/notes/upload?success=true");
   });
 });
 
-// Serve static files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname)));
-//ALL MONGODB STUFF
-const mongUri = 'mongodb+srv://admin:admin123@cluster0.l5zpc.mongodb.net/notenest?retryWrites=true&w=majority&appName=Cluster0'
-mongoose.connect(mongUri)
-  .then(() => {
-    app.listen(port, host, () => {
-      console.log("Server is running on port", port);
-      console.log("MongoDB connected");
-    });
-  })
-  .catch(err => console.log(err.message))
-
-//mount middleware
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan('tiny'));
-app.use(methodOverride('_method'));
-
-app.use(session({
-  secret: 'jhkjhjhjhkhjhkoiuoiuio',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 60 * 60 * 1000 },
-  store: new MongoStore({ mongoUrl: mongUri })
-}));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(flash());
-
-//prints session
-app.use((req, res, next) => {
-  res.locals.user = req.session.user || null;
-  console.log("user session: " + req.session.user);
-  console.log("local user var: " + res.locals.user);
-
-  res.locals.errorMessages = req.flash('error');
-  res.locals.successMessages = req.flash('success');
-  next();
-});
-//MONGODB END
-
-//set up routes 
-const { isLoggedIn } = require('./middlewares/auth');
-app.post('/upload', (req, res) => {
-  uploadWithMongoDB(req, res, (err) => {
-    if (err) {
-      return res.status(400).send(err.message);
-    }
-    // Redirect back to the upload page with a success flag
-    res.redirect('/upload?success=true');
-  });
-});
-
-// Serve static files (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname)));
-
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   if (req.session.user && !req.body.prof) {
     return res.redirect("/studentHomePage");
   } else if (req.session.user && req.body.prof) {
@@ -192,8 +130,6 @@ app.get("/test", (req, res) => {
 
 // Import schemas
 app.use("/user", userRoutes);
-// Uncomment the following line when noteRoutes is complete
-// app.use('/notes', noteRoutes);
 
 // Error handling
 app.use((req, res, next) => {
@@ -209,7 +145,6 @@ app.use((err, req, res, next) => {
     err.message = "Internal Server Error";
   }
 
-  // Ensure the user context is available for the error page
   res.locals.user = req.session.user || null;
 
   res.status(err.status);
@@ -217,7 +152,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`Server running at http://${HOST}:${PORT}`);
 });
 

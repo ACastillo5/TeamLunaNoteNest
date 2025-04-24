@@ -9,9 +9,9 @@ const flash = require("connect-flash"); // Displays error messages
 const bcrypt = require("bcrypt"); // Password hasher
 const session = require("express-session"); // Stores session ID
 const uploadWithMongoDB = require("./models/upload");
+const File = require("./models/file");
 
 const userRoutes = require("./routes/userRoutes");
-const noteRoutes = require("./routes/noteRoutes");
 
 const app = express();
 const PORT = 3000;
@@ -40,7 +40,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 60 * 60 * 1000 },
-    store: new MongoStore({ mongoUrl: mongoUri }),
+    store: MongoStore.create({ mongoUrl: mongoUri }),
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -70,10 +70,30 @@ app.post("/upload", (req, res) => {
   });
 });
 
+app.get("/notes/search", async (req, res) => {
+  const searchQuery = req.query.q || "";
+  try {
+    const results = await File.find({
+      $or: [
+        { filename: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in filename
+        { course: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in course
+        { professor: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in professor
+        { description: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in description
+      ],
+    });
+
+    // Render the search page with the results
+    res.render("notes/search", { results, searchQuery });
+  } catch (err) {
+    console.error("Error searching files:", err.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.get("/", (req, res) => {
-  if (req.session.user && !req.body.prof) {
+  if (req.session.user && !req.session.prof) {
     return res.redirect("/studentHomePage");
-  } else if (req.session.user && req.body.prof) {
+  } else if (req.session.user && req.session.prof) {
     return res.redirect("/profHomePage");
   } else {
     res.render("index");
@@ -86,10 +106,6 @@ app.get("/studentHomePage", isLoggedIn, (req, res) => {
 
 app.get("/profHomePage", isLoggedIn, (req, res) => {
   res.render("professor-home");
-});
-
-app.get("/notes/search", (req, res) => {
-  res.render("notes/search");
 });
 
 app.get("/notes/upload", (req, res) => {

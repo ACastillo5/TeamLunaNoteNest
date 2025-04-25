@@ -10,6 +10,7 @@ const fileSchema = new mongoose.Schema({
   course: String,
   professor: String,
   description: String,
+  thumbnail: String,
 });
 
 module.exports = mongoose.model('File', fileSchema);

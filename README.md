@@ -32,7 +32,7 @@ integrity rules
     - You would need `Node.js` for this
     - In terminal run: `npm install`
         - It will download a folder labeled `node_modules`. Once you see this file, you don't necessarily need to run 'npm install' again.
-- Run nodemon
+- Run project
     - In terminal, run: `npx nodemon app`
 - Open your browser and type in `localhost:3000` 
     - You should be able to see the website
@@ -40,3 +40,5 @@ integrity rules
     - Install MongoDB: https://www.mongodb.com/try/download/community
     - Open MongoDB Compass and start a new connection and at the end of the url connection add: "NoteNest"
         - Once running, to see new database items, press 'Refresh' at top right of window
+- To populate database
+    - In the terminal run: `npx nodemon populateDatabase.js`

@@ -42,3 +42,4 @@ integrity rules
         - Once running, to see new database items, press 'Refresh' at top right of window
 - To populate database
     - In the terminal run: `npx nodemon populateDatabase.js`
+    - **EDIT 5/4:** running file this is no longer necessary, users and files should already exist within the database. The file is kept inside the project for the sake of archival but should NOT need to be run.

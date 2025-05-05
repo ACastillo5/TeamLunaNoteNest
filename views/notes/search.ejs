@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/styles/notes/preview-page.css">
   <link rel="stylesheet" href="/styles/thumbnails.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
   <style>
 
     form {
@@ -69,6 +68,8 @@
                 <a href="/notes/preview/<%= note._id %>">
                   <img src="<%= note.thumbnail || '/images/notes_paper.jpg' %>" alt="Note Thumbnail" />
                 </a>
+                <h3><%= note.filename || "Unknown Name" %></h3>
+                <hr>
                 <p><strong><%= note.course || "Unknown Course" %></strong></p>
                 <p><strong><%= note.professor || "Unknown Course" %></strong></p>
                 <p><%= note.description || "No description available." %></p>

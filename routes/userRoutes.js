@@ -15,12 +15,12 @@ router.get('/login', isGuest, controller.getUserLogin);
 
 router.post('/login', loginLimiter, isGuest, validateLogin, controller.login);
 
+router.get('/logout', isLoggedIn, controller.logout);
+
 router.get('/profile', isLoggedIn, controller.profile);
 
 router.get("/bookmarks", (req, res) => {
-    res.render("user/bookmarks"); // Render user/bookmarks.ejs
+    res.render("user/bookmarks");
 });
-
-router.get('/logout', isLoggedIn, controller.logout);
 
 module.exports = router;

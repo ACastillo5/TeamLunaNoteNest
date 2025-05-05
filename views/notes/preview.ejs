@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/preview-page.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
 </head>
 
 <!-- https://pypi.org/project/preview-generator/0.2.2/ -->
@@ -18,7 +17,8 @@
   <main>
     <br>
     <div class="p-container">
-      <div class="left">
+
+    <!-- <div class="left">
         <a class="preview" href="#1">
           <p>1</p>
         </a>
@@ -49,20 +49,46 @@
         <a class="preview">
           <p>N/A</p>
         </a>
+      </div> -->
 
-      </div>
       <div class="middle">
-        <p><strong>CLASS NAME</strong></p>
+        <br>
+        <h3>INFO:</h3>
         <hr>
-        <p><strong>PROF NAME</strong></p>
+        <p><strong>Course:</strong> <%= file.course %></p>
+        <p><strong>Prof:</strong> <%= file.professor %></p>
         <br>
-        <p><a href="/profile">AUTHOR NAME</a></p>
-        <br>
-        <p>FILE DETAILS HERE</p>
-        <br>
+        <% if (file.uploader) { %>
+          <p><strong>Uploader:</strong> 
+            <a href="/profile/<%= file.uploader._id %>">
+              <%= file.uploader.firstname + " " + file.uploader.lastname %>
+            </a>
+          </p>
+        <% } else { %>
+          <p><em>Uploader information not available.</em></p>
+        <% } %>
+        
+        <br><br>
+        <h3>DESCRIPTION: </h3>
+        <hr>
+        <p><%= file.description %></p>
 
       </div>
       <div class="right">
+        <h1><%= file.filename %></h1>
+        <a class="small-btn" download href="<%= '/uploads/documents/' + file.filename %>">Download</a>        
+        <button>Bookmark</button>        
+        <button>Report</button>
+        <br>
+      
+        <div class="document">
+          <!-- <img src="/images/placeholder.png"> -->
+           <iframe src="<%= "/uploads/documents/" + file.filename %>"></iframe>
+        </a>
+      </div>
+      <br>
+      
+      <!-- <div class="right">
           <h1>note_title.pdf</h1>
           <button>Download</button>        
           <button>Bookmark</button>        
@@ -84,7 +110,7 @@
         <button>Download</button>
         <button>Bookmark</button>        
         <button>Report</button>
-      </div>
+      </div>-->
     </div>
   </main>
 </body>

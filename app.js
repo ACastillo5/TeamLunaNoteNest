@@ -8,10 +8,10 @@ const MongoStore = require("connect-mongo");
 const flash = require("connect-flash"); // Displays error messages
 const bcrypt = require("bcrypt"); // Password hasher
 const session = require("express-session"); // Stores session ID
-const uploadWithMongoDB = require("./models/upload");
 const File = require("./models/file");
 
 const userRoutes = require("./routes/userRoutes");
+const noteRoutes = require("./routes/noteRoutes");
 
 const app = express();
 const PORT = 3000;
@@ -59,93 +59,29 @@ app.use((req, res, next) => {
 });
 
 // Routes
-const { isLoggedIn } = require("./middlewares/auth");
-
-app.post("/upload", (req, res) => {
-  uploadWithMongoDB(req, res, (err) => {
-    if (err) {
-      return res.status(400).send(err.message);
-    }
-    res.redirect("/notes/upload?success=true");
-  });
-});
-
-app.get("/notes/search", async (req, res) => {
-  const searchQuery = req.query.q || "";
-  try {
-    const results = await File.find({
-      $or: [
-        { filename: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in filename
-        { course: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in course
-        { professor: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in professor
-        { description: { $regex: searchQuery, $options: "i" } }, // Case-insensitive search in description
-      ],
-    });
-
-    // Render the search page with the results
-    res.render("notes/search", { results, searchQuery });
-  } catch (err) {
-    console.error("Error searching files:", err.message);
-    res.status(500).send("Internal Server Error");
-  }
-});
+const { isLoggedIn, isProf } = require("./middlewares/auth");
 
 app.get("/", (req, res) => {
-  if (req.session.user && !req.session.prof) {
+  const u = req.session.user;
+  if (u && !u.prof) {
     return res.redirect("/studentHomePage");
-  } else if (req.session.user && req.session.prof) {
+  } else if (u && u.prof) {
     return res.redirect("/profHomePage");
-  } else {
-    res.render("index");
-  }
+  } 
+  return res.render("index");
 });
 
 app.get("/studentHomePage", isLoggedIn, (req, res) => {
   res.render("student-home");
 });
 
-app.get("/profHomePage", isLoggedIn, (req, res) => {
+app.get("/profHomePage", isLoggedIn, isProf, (req, res) => {
   res.render("professor-home");
-});
-
-app.get("/notes/upload", (req, res) => {
-  res.render("notes/upload");
-});
-
-app.get("/notes/preview", (req, res) => {
-  res.render("notes/preview");
-});
-
-app.get("/notes/reports", (req, res) => {
-  res.render("notes/reports");
-});
-
-app.get("/bookmarks", (req, res) => {
-  res.render("user/bookmarks");
-});
-
-app.get("/reports", (req, res) => {
-  res.render("notes/reports");
-});
-
-app.get("/login", (req, res) => {
-  res.render("user/login");
-});
-
-app.get("/profile", (req, res) => {
-  res.render("user/profile");
-});
-
-app.get("/signup", (req, res) => {
-  res.render("user/signup");
-});
-
-app.get("/test", (req, res) => {
-  res.render("user/test");
 });
 
 // Import schemas
 app.use("/user", userRoutes);
+app.use("/notes", noteRoutes);
 
 // Error handling
 app.use((req, res, next) => {

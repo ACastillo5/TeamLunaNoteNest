@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const fileSchema = new mongoose.Schema({
-  fieldname: String,
   filename: String,
   filepath: String,
   mimetype: String,
@@ -11,6 +11,7 @@ const fileSchema = new mongoose.Schema({
   professor: String,
   description: String,
   thumbnail: String,
+  uploader: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 module.exports = mongoose.model('File', fileSchema);

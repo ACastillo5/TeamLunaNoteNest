@@ -1,5 +1,5 @@
 const model = require('../models/user');
-const note = require('../models/note');
+// const note = require('../models/note');
 const { validationResult } = require('express-validator');
 
 exports.new = (req, res) => {
@@ -18,7 +18,7 @@ exports.create = async (req, res, next) => {
     } else {
         res.redirect('/');
     }
-    
+
     const errors = validationResult(req); // CHECK VALIDATION RESULTS
     if (!errors.isEmpty()) {
         const errorMessages = errors.array().map(error => error.msg);
@@ -56,8 +56,6 @@ exports.getUserLogin = (req, res, next) => {
 
 exports.login = (req, res, next) => {
     let email = req.body.email;
-    // if(user.email) 
-    //     user.email = user.email.toLowerCase();
     let password = req.body.password;
     model.findOne({ email: email })
         .then(user => {
@@ -69,9 +67,18 @@ exports.login = (req, res, next) => {
                 user.comparePassword(password)
                     .then(result => {
                         if (result) {
-                            req.session.user = user._id;
+                            // build a session object that has prof identifier
+                            const sessionUser = {
+                                _id: user._id.toString(),
+                                firstname: user.firstname,
+                                lastname: user.lastname,
+                                email: user.email,
+                                prof: user.prof
+                            };
+                            req.session.user = sessionUser;
                             req.flash('success', 'You have successfully logged in');
-                            res.redirect('/studenthomepage');
+                            // redirect based on prof flag
+                            return res.redirect(user.prof ? '/profHomePage' : '/studentHomePage');
                         } else {
                             req.flash('error', 'Wrong password');
                             res.redirect('/user/login');
@@ -91,12 +98,16 @@ exports.logout = (req, res, next) => {
     });
 };
 
+//GET /user/profile/:id - send details of user profile identified by id
 exports.profile = (req, res, next) => {
     let id = req.session.user;
     Promise.all([model.findById(id)])
         .then(results => {
             const [user] = results;
-            res.render('./user/profile', { user }); 
+            res.render('./user/profile', { user });
         })
         .catch(err => next(err));
 };
+
+// exports.bookmarks = (req, res, next) => {
+// };

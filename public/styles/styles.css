@@ -65,6 +65,17 @@ body {
     font-weight: 200;
 }
 
+.square {
+    height: 250px;
+    border: 1.2px #333 solid;
+    object-fit: cover;
+}
+
+.square:hover {
+    object-fit: contain;
+    background:#333;
+}
+
 main {
     margin: 0 11%;
 }

@@ -59,13 +59,6 @@ exports.search = async (req, res) => {
 
 //GET /notes/preview/:id - send details of note identified by id
 exports.preview = async (req, res, next) => {
-    const file = await File
-    .findById(req.params.id)
-    .populate('uploader', 'firstname lastname')
-    .exec();
-
-    console.log('👀 preview file:', file);
-
     const id = req.params.id;
 
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -75,13 +68,6 @@ exports.preview = async (req, res, next) => {
     }
 
     try {
-        // Promise.all([File.findById(id), File.find({ uploader: id })])
-        // .then(results => {
-        //     const [user, file] = results;
-        //     res.render('notes/preview', { user, file });
-        // })
-        // .catch(err => next(err));
-
         const file = await File.findById(id).populate('uploader', 'firstname lastname');
         if (!file) {
             const err = new Error('Cannot find file with id: ' + id);
@@ -89,11 +75,14 @@ exports.preview = async (req, res, next) => {
             return next(err);
         }
 
+        const filePath = path.join(__dirname, '../public/uploads/documents/', file.filename);
+        const fileExists = fs.existsSync(filePath); // Sync is fine for this one-off check
+
         res.render('notes/preview', {
             file,
-            currentUserId: req.session?.user || null
+            currentUserId: req.session?.user || null,
+            fileExists
         });
-
     } catch (err) {
         next(err);
     }

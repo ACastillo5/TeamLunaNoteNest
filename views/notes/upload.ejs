@@ -14,8 +14,8 @@
 <body>
   <%- include('../partials/header.ejs')%>
   <main>
-    <div id="successMessage" class="success" style="display: none;">
     <br><br><br>
+    <div id="successMessage" class="success" style="display: none;">
       Notes uploaded successfully!
     </div>
     <div id="errorMessage" class="error-message" style="display: none;"></div>
@@ -86,7 +86,7 @@
         const professor = document.getElementById('professor').value.trim();
         const description = document.getElementById('description').value.trim();
         const academicIntegrity = document.getElementById('academicIntegrity').checked;
-        const guidelines = document.getElementById('guidelines').checked;
+        // const guidelines = document.getElementById('guidelines').checked;
         const errorMessage = document.getElementById('errorMessage');
 
         // Clear previous error message
@@ -119,20 +119,20 @@
           errorMessage.style.display = 'block';
           return false;
         }
-        if (!guidelines) {
-          errorMessage.textContent = 'You must confirm the NoteNest Guidelines.';
-          errorMessage.style.display = 'block';
-          return false;
-        }
+        // if (!guidelines) {
+        //   errorMessage.textContent = 'You must confirm the NoteNest Guidelines.';
+        //   errorMessage.style.display = 'block';
+        //   return false;
+        // }
 
         return true;
       }
 
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('success') === 'true') {
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
 
+      if (urlParams.get('success') === 'true') {
         // Only show the success message if there are no validation errors
         if (errorMessage.style.display === 'none') {
           successMessage.style.display = 'block';

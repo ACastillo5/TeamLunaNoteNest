@@ -15,34 +15,24 @@
   <%- include('../partials/header.ejs')%>
   <main>
     <br>
-      <h1>Your Bookmarks</h1>
-    <br><hr><br>
-    <h2>You have bookmarked these notes:</h2>
-    <div class="row">
-      <div class="n-column">
-        <a href=/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
+    <h1>Your Bookmarks</h1>
+    <% if (notes.length > 0) { %>
+      <div class="row">
+        <% notes.forEach((note) => { %>
+          <div class="n-column">
+            <a href="/notes/preview/<%= note._id %>">
+              <img src="<%= note.thumbnail || '/images/notes_paper.jpg' %>" />
+            </a>
+            <h3><%= note.filename %></h3>
+            <p><strong><%= note.course %></strong></p>
+            <p><strong><%= note.professor %></strong></p>
+            <p><%= note.description %></p>
+          </div>
+        <% }) %>
       </div>
-      <div class="n-column">
-        <a href=/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
+    <% } else { %>
+      <p style="color: brown;">You haven’t bookmarked any notes yet!</p>
+    <% } %>
 
     </div>
 

@@ -1,5 +1,3 @@
-//This is untested, running this may conflict with recent changes. 
-
 const mongoose = require("mongoose");
 const File = require("./models/file");
 const User = require("./models/user");
@@ -12,8 +10,8 @@ async function populateDatabase() {
         useUnifiedTopology: true,
     });
 
-    // test user:
-    let testUser = await User.findOne({ email: "test@example.com" });
+    // test user
+    let testUser = await User.findOne({ email: "test@gmail.com" });
     if (!testUser) {
         testUser = await User.create({
             firstname: "John",
@@ -23,16 +21,15 @@ async function populateDatabase() {
         });
     }
 
-    // removing this line bc i want to preserve dummy upload data
-    // await File.deleteMany({});
+    // remove this line to preserve upload data
+    await File.deleteMany({});
 
-    // new files bc i accidentally deleted the old ones 😭😭😭😭
+    // new files
     const sampleFiles = [
         {
-            filename: "heuristics-template.docx",
-            filepath: "/uploads/documents/heuristic-review-template.docx",
-            mimetype:
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",            size: 102400,
+            filename: "cybersecurity-advocates.pdf",
+            filepath: "/uploads/documents/cybersecurity-advocates.pdf",
+            mimetype: "application/pdf",           
             size: 298496,
             course: "Usable Security and Privacy",
             professor: "Erikson",

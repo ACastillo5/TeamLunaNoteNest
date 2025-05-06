@@ -61,8 +61,11 @@ app.use((req, res, next) => {
 // Routes
 const { isLoggedIn, isProf } = require("./middlewares/auth");
 
+
+//GET index - send all files to user
 app.get("/", (req, res) => {
   const u = req.session.user;
+
   if (u && !u.prof) {
     return res.redirect("/studentHomePage");
   } else if (u && u.prof) {
@@ -71,12 +74,43 @@ app.get("/", (req, res) => {
   return res.render("index");
 });
 
-app.get("/studentHomePage", isLoggedIn, (req, res) => {
-  res.render("student-home");
+// app.get("/", async (req, res, next) => {
+//   const u = req.session.user;
+
+//     try {
+//       if (u && !u.prof) {
+//         const files = await File.find({});
+//         res.render('/studentHomePage', { files });
+//       } else if (u && u.prof) {
+//         const files = await File.find({});
+//         res.render('/profHomePage', { files });
+//         }
+//     } catch (err) {
+//       console.error('Error loading files:', err);
+//       res.status(500).send('Internal Server Error');
+//     }
+    
+//   return res.render("index");
+// });
+
+app.get("/studentHomePage", isLoggedIn, async (req, res) => {
+  try {
+    const files = await File.find({});
+    res.render('student-home', { files });
+  } catch (err) {
+    console.error('Error loading files:', err);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
-app.get("/profHomePage", isLoggedIn, isProf, (req, res) => {
-  res.render("professor-home");
+app.get("/profHomePage", isLoggedIn, isProf, async (req, res) => {
+  try {
+    const files = await File.find({});
+    res.render('professor-home', { files });
+  } catch (err) {
+    console.error('Error loading files:', err);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // Import schemas

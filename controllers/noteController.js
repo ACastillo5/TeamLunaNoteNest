@@ -1,6 +1,5 @@
 const File = require('../models/file');
 const User = require('../models/user');
-
 const path = require('path');
 const fs = require('fs');
 
@@ -60,31 +59,41 @@ exports.search = async (req, res) => {
 //GET /notes/preview/:id - send details of note identified by id
 exports.preview = async (req, res, next) => {
     const id = req.params.id;
-
+    
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        const err = new Error('Invalid file id');
-        err.status = 400;
-        return next(err);
+      const err = new Error('Invalid file id');
+      err.status = 400;
+      return next(err);
     }
-
+  
     try {
-        const file = await File.findById(id).populate('uploader', 'firstname lastname');
-        if (!file) {
-            const err = new Error('Cannot find file with id: ' + id);
-            err.status = 404;
-            return next(err);
-        }
-
-        const filePath = path.join(__dirname, '../public/uploads/documents/', file.filename);
-        const fileExists = fs.existsSync(filePath); // Sync is fine for this one-off check
-
-        res.render('notes/preview', {
-            file,
-            currentUserId: req.session?.user || null,
-            fileExists
-        });
+      const file = await File.findById(id)
+                             .populate('uploader', 'firstname lastname');
+      if (!file) {
+        const err = new Error('Cannot find file with id: ' + id);
+        err.status = 404;
+        return next(err);
+      }
+  
+      const filePath = path.join(__dirname, '../public/uploads/documents/', file.filename);
+      const fileExists = fs.existsSync(filePath);
+  
+      // figure out if the logged‑in user has bookmarked this file
+      let isBookmarked = false;
+      if (req.session.user) {
+        const currentUser = await User.findById(req.session.user._id);
+        // make sure `bookmarks` is an array in the schema
+        isBookmarked = currentUser.bookmarks.some(b => b.equals(file._id));
+      }
+  
+      res.render('notes/preview', {
+        file,
+        fileExists,
+        isBookmarked
+      });
+  
     } catch (err) {
-        next(err);
+      next(err);
     }
-};
+  };
 

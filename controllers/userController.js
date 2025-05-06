@@ -1,5 +1,5 @@
-const model = require('../models/user');
-// const note = require('../models/note');
+const User = require('../models/user');
+const File = require('../models/file');
 const { validationResult } = require('express-validator');
 
 exports.new = (req, res) => {
@@ -26,7 +26,7 @@ exports.create = async (req, res, next) => {
         return res.redirect('/user/signup');
     }
 
-    let user = new model(req.body);
+    let user = new User(req.body);
     console.log('full field= ', user);
 
     console.log("POST /user/signup hit");
@@ -57,7 +57,7 @@ exports.getUserLogin = (req, res, next) => {
 exports.login = (req, res, next) => {
     let email = req.body.email;
     let password = req.body.password;
-    model.findOne({ email: email })
+    User.findOne({ email: email })
         .then(user => {
             if (!user) {
                 console.log('wrong email address');
@@ -68,14 +68,14 @@ exports.login = (req, res, next) => {
                     .then(result => {
                         if (result) {
                             // build a session object that has prof identifier
-                            const sessionUser = {
+                            const sessionmodel = {
                                 _id: user._id.toString(),
                                 firstname: user.firstname,
                                 lastname: user.lastname,
                                 email: user.email,
                                 prof: user.prof
                             };
-                            req.session.user = sessionUser;
+                            req.session.user = sessionmodel;
                             req.flash('success', 'You have successfully logged in');
                             // redirect based on prof flag
                             return res.redirect(user.prof ? '/profHomePage' : '/studentHomePage');
@@ -101,13 +101,45 @@ exports.logout = (req, res, next) => {
 //GET /user/profile/:id - send details of user profile identified by id
 exports.profile = (req, res, next) => {
     let id = req.session.user;
-    Promise.all([model.findById(id)])
+    Promise.all([User.findById(id), File.find({ uploader: id })])
         .then(results => {
-            const [user] = results;
-            res.render('./user/profile', { user });
+            const [user, files] = results;
+            res.render('./user/profile', { user, files });
         })
         .catch(err => next(err));
 };
 
-// exports.bookmarks = (req, res, next) => {
-// };
+exports.toggleBookmark = async (req, res, next) => {
+    const fileId = req.params.id;
+    const userId = req.session.user._id;
+
+    try {
+        // load user
+        const user = await User.findById(userId);
+        // see if it’s already bookmarked
+        const idx = user.bookmarks.findIndex(b => b.equals(fileId));
+        if (idx === -1) {
+            // add bookmark
+            user.bookmarks.push(fileId);
+            req.flash('success', 'Added bookmark');
+        } else {
+            // or remove it
+            user.bookmarks.splice(idx, 1);
+            req.flash('error', 'Removed bookmark');
+        }
+        await user.save();
+        res.redirect('back');
+    } catch (err) {
+        next(err);
+    }
+};
+
+exports.showBookmarks = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.session.user._id)
+            .populate('bookmarks');
+        res.render('user/bookmarks', { notes: user.bookmarks });
+    } catch (err) {
+        next(err);
+    }
+};

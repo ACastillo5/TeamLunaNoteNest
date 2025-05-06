@@ -5,34 +5,33 @@
     <a href="/user/login">LOG IN</a>
     <a href="/user/signup" class="small-btn">SIGN UP</a>
     <% } else if (user.prof) { %>
-      <a href="/user/logout">Logout</a> 
       <a href="/notes/reports">✶Reports</a> 
       <a href="/notes/search">Search Notes</a>
       <a href="/notes/upload">Upload</a> 
       <a href="/user/bookmarks">Bookmarks</a> 
       <a href="/user/profile">Profile</a> 
+      <a href="/user/logout"><strong>Logout</strong></a> 
     <% } else { %>                
-    <a href="/user/logout">Logout</a> 
     <a href="/notes/search">Search Notes</a>
     <a href="/notes/upload">Upload</a> 
     <a href="/user/bookmarks">Bookmarks</a> 
     <a href="/user/profile">Profile</a> 
+    <a href="/user/logout"><strong>Logout</strong></a> 
     <% } %>
   </div>
 </nav>
-<% if(errorMessages.length > 0) {%>
-  <% errorMessages.forEach(message=>{%>
-      <div class='error'>
-          <%=message%>
-      </div>
-      <%});%>
-          <%}%>
+  <% if(errorMessages.length > 0) {%>
+    <% errorMessages.forEach(message=>{%>
+        <div class='error'>
+            <%=message%>
+        </div>
+    <% }); %>
+  <% } %>
 
-              <% if(successMessages.length > 0) {%>
-
-                  <% successMessages.forEach(message=>{%>
-                      <div class='success'>
-                          <%=message%>
-                      </div>
-                      <%});%>
-                          <%}%>
+  <% if(successMessages.length > 0) {%>
+    <% successMessages.forEach(message=>{%>
+        <div class='success'>
+            <%=message%>
+        </div>
+    <% }); %>
+  <% } %>

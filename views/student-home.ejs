@@ -18,7 +18,24 @@
         <hr>
         <h2>Recent notes:</h2>
         <div class="row">
-          <div class="n-column">
+
+          <% if (files && files.length > 0) { %>
+            <% files.forEach((note) => { %>
+              <div class="n-column">
+                <a href="/notes/preview/<%= note._id %>">
+                  <img src="<%= note.thumbnail || '/images/notes_paper.jpg' %>" alt="Note Thumbnail" />
+                </a>
+                <h3><%= note.filename || "Unknown Name" %></h3>
+                <hr>
+                <p><small><em><%= note.course || "Unknown Course" %> - <%= note.professor || "Unknown Course" %></em></small></p>
+                <p><%= note.description || "No description available." %></p>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <p>No files found.</p>
+          <% } %>
+
+          <!-- <div class="n-column">
             <a href=/notes/preview><img src="/images/placeholder.png"></a>
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
@@ -77,7 +94,7 @@
             <h3>TITLE</h3>
             <p><strong>class name</strong></p>
             <p>description lorem ipsum dolor sit amet consiour.</p>
-          </div>
+          </div> -->
         </div>
 
     </main>

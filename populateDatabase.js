@@ -21,8 +21,9 @@ async function populateDatabase() {
         });
     }
 
-    // remove this line to preserve upload data
+    // remove this line to preserve upload/user data
     await File.deleteMany({});
+    await User.deleteMany({});
 
     // new files
     const sampleFiles = [
@@ -45,7 +46,7 @@ async function populateDatabase() {
             course: "History of Art",
             professor: "Williams",
             description: "Overview of Renaissance art",
-            thumbnail: "/images/notes_paper.png",
+            thumbnail: "/images/notes_paper.jpg",
             uploader: testUser._id,
         },
     ];

@@ -9,98 +9,40 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/thumbnails.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
 </head>
 
 <body>
   <%- include('../partials/header.ejs')%>
   <main>
     <br>
-    <div class="title">
+    <!-- <div class="title"> -->
       <h1><%= user.firstname + " " + user.lastname %>'s Profile</h1>
-      <button id="byclass">By Class</button>
-      <button id="seeall">See All</button>
-    </div>
+      <!-- <button id="byclass">By Class</button> -->
+      <!-- <button id="seeall">See All</button> -->
+    <!-- </div> -->
     <br><hr><br>
-    <h2><%= user.firstname %> has submitted these notes:</h2>
+    <h2>You have submitted these notes:</h2>
     <div class="row">
-      <div class="n-column">
-        <a href=/notes/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/notes/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/notes/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/notes/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/notes/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
-      <div class="n-column">
-        <a href=/notes/preview><img src="/images/placeholder.png"></a>
-        <h3>TITLE</h3>
-        <p><strong>class name</strong></p>
-        <p>description lorem ipsum dolor sit amet consiour.</p>
-      </div>
+
+      <% if (files.length) { %>
+        <% files.forEach((note) => { %>
+          <div class="n-column">
+            <a href="/notes/preview/<%= note._id %>">
+              <img src="<%= note.thumbnail || '/images/notes_paper.jpg' %>" alt="Note Thumbnail" />
+            </a>
+            <h3><%= note.filename || "Unknown Name" %></h3>
+            <hr>
+            <p><small><em><%= note.course || "Unknown Course" %> - <%= note.professor || "Unknown Course" %></em></small></p>
+            <p><%= note.description || "No description available." %></p>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <br><br>
+        <p style="color: brown;">You haven't uploaded anything yet!</p>
+      <% } %>
     </div>
 
   </main>
-  <script>
-    // !!!!!! THIS IS TEMPORARY CODE !!!!!!
-    // TO BE REPLACED WITH DYNAMICALLY-LOADING NOTES
-    document.addEventListener("DOMContentLoaded", function () {
-      const byclassBtn = document.getElementById("byclass");
-      const allBtn = document.getElementById("seeall");
-      const nColumns = document.querySelectorAll(".n-column");
-      let fColumn = null;
-
-      allBtn.classList.add("active");
-
-      byclassBtn.addEventListener("click", function () {
-        byclassBtn.classList.add("active");
-        allBtn.classList.remove("active");
-
-        nColumns.forEach(column => column.style.display = "none");
-
-        if (!fColumn) {
-          fColumn = document.createElement("div");
-          fColumn.className = "f-column";
-          fColumn.innerHTML = `<img src="/images/folder-icon.png"> <p><strong>class name</strong></p>`;
-          document.querySelector(".row").appendChild(fColumn);
-        }
-
-        fColumn.style.display = "block";
-      });
-
-      allBtn.addEventListener("click", function () {
-        allBtn.classList.add("active");
-        byclassBtn.classList.remove("active");
-
-        nColumns.forEach(column => column.style.display = "block");
-
-        if (fColumn) fColumn.style.display = "none";
-      });
-    });
-
-  </script>
 </body>
 
 </html>

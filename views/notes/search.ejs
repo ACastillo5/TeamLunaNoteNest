@@ -7,10 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Search</title>
   <link rel="stylesheet" href="/styles/styles.css">
-  <link rel="stylesheet" href="/styles/notes/preview-page.css">
   <link rel="stylesheet" href="/styles/thumbnails.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/accountHead.js" defer></script>
   <style>
 
     form {
@@ -61,23 +59,30 @@
           </button>
         </form>
         <br>
-        <h2>Results for "<%= searchQuery || "All" %>"</h2>
-        <div class="row">
+        <% if (typeof searchQuery !== 'undefined' && searchQuery.trim() !== '') { %>
           <% if (results && results.length > 0) { %>
-            <% results.forEach((note) => { %>
-              <div class="n-column">
-                <a href="/notes/preview/<%= note._id %>">
-                  <img src="<%= note.thumbnail || '/images/notes_paper.jpg' %>" alt="Note Thumbnail" />
-                </a>
-                <p><strong><%= note.course || "Unknown Course" %></strong></p>
-                <p><strong><%= note.professor || "Unknown Course" %></strong></p>
-                <p><%= note.description || "No description available." %></p>
-              </div>
-            <% }); %>
+            <h2>Results for "<%= searchQuery %>"</h2>
+            <div class="row">
+              <% results.forEach((note) => { %>
+                <div class="n-column">
+                  <a href="/notes/preview/<%= note._id %>">
+                    <img src="<%= note.thumbnail || '/images/notes_paper.jpg' %>" alt="Note Thumbnail" />
+                  </a>
+                  <h3><%= note.filename || "Unknown Name" %></h3>
+                  <hr>
+                  <p><small><em><%= note.course || "Unknown Course" %> - <%= note.professor || "Unknown Course" %></em></small></p>
+                  <p><%= note.description || "No description available." %></p>
+                </div>
+              <% }); %>
+            </div>
           <% } else { %>
+            <h2>Results for "<%= searchQuery %>"</h2>
             <p>No results found.</p>
           <% } %>
-        </div>
+        <% } else { %>
+          <h2>Start typing above to search for notes.</h2>
+        <% } %>
+        
     </main>
   </body>
 </html>

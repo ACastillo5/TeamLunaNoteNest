@@ -7,7 +7,8 @@ const userSchema = new Schema({
     lastname: {type: String, required: [true, 'cannot be empty']},    
     email: {type: String, required: [true, 'cannot be empty'], unique: true},
     password: {type: String, required: [true, 'cannot be empty']},
-    prof: { type: Boolean, default: false }
+    prof: { type: Boolean, default: false },
+    bookmarks: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 });
 
 userSchema.pre('save', function(next){
@@ -26,7 +27,5 @@ userSchema.methods.comparePassword = function(inputPassword) {
     let user = this;
     return bcrypt.compare(inputPassword, user.password);
 }
-
-// const collection = new mongoose.model("users", userSchema)
 
 module.exports = mongoose.model('User', userSchema);

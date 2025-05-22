@@ -36,11 +36,3 @@ exports.validateResult = (req, res, next) => {
 //         return next();
 //     }
 // };
-
-// exports.validateNote =     
-// [
-//     body('title', 'Title cannot be empty').notEmpty().trim().escape(),
-//     body('prof', 'Professor name cannot be empty').notEmpty().trim().escape(),
-//     body('class', 'Class name cannot be empty').notEmpty().trim().escape(),
-//     body('details', 'Detail field must be at least 10 characters').notEmpty().trim().escape().isLength({ min: 10 })
-// ];

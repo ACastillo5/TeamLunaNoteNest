@@ -1,9 +1,49 @@
-.p-container {
-    display: flex;
-    height: 85vh;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.left {
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.p-container {
+    flex: 1;
+    display: flex;
+}
+
+.middle {
+    width: 13vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* .right {
+    flex-grow: 1;
+    padding: 10px 45px;
+    height: 100%;
+} */
+.right {
+    flex-grow: 1; 
+    padding: 10px 45px;
+    height: 100%;
+    flex-direction: column;
+}
+
+/* .left {
     width: 5vw;
     padding: 10px;
     overflow-y: scroll; 
@@ -11,25 +51,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.middle {
-    width: 8vw;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.right {
-    flex-grow: 1;
-    height: 100%;
-    padding: 10px 45px;
-    overflow-y: scroll; 
-}
+} */
 
 /* LEFT - Preview Boxes */
-.preview {
+/* .preview {
     height: 10vh;
     width: 80%;
     margin-bottom: 15px;
@@ -40,26 +65,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; /* prevents the .preview divs from shrinking */
+    flex-shrink: 0; 
 }
 
 .preview:hover, .preview:active, .preview:hover p, .preview:active p{
     cursor: pointer;
     box-shadow: inset 0 0 0 99999px black;
     color: white;
-}
+} */
 
 /* RIGHT - Document */
+/* .document {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+} */
+
 .document {
     position: relative;
-    width: 100%; 
+    width: 100%;
+    height: 100vh;
+    flex-grow: 1;
     margin: 15px 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.document img {
-    width: 95%;
+.document iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    flex-grow: 1; 
     display: block;
 }
+
 
 .document p {
     position: absolute;
@@ -75,9 +114,7 @@
         display: block;
         height: 100vh;
     }
-    .left {
-        display:none;
-    }
+
     .middle {
         width: 100%;
         padding: 10px;
@@ -85,18 +122,20 @@
         flex-direction: column;
         align-items: center;
     }
+
     .right {
         border: 1px solid black;
         background-color: rgba(222, 219, 215, 0.815);
     }
-    .document img {
+
+    .document iframe {
         width: 100%;
     }
+
     .document p {
         right: -18px;
     }
 
 }
 
-@media screen and (max-width: 600px) {
-}
+@media screen and (max-width: 600px) {}

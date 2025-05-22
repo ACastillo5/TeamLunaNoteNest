@@ -9,19 +9,18 @@
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/upload.css">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <script src="/public/accountHead.js" defer></script>
 </head>
 
 <body>
   <%- include('../partials/header.ejs')%>
   <main>
-    <br><br>
+    <br><br><br>
     <div id="successMessage" class="success" style="display: none;">
       Notes uploaded successfully!
     </div>
     <div id="errorMessage" class="error-message" style="display: none;"></div>
     <h1 class="simple-title">Upload</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form action="/notes/upload" method="POST" enctype="multipart/form-data">
       <div class="input-container">
         <p class="input-text">File Upload:</p>
         <div id="topRectangle" class="top-rectangle" onclick="document.getElementById('fileInput').click();">
@@ -55,12 +54,12 @@
       </div>
       <div class="input-container">
         <input type="checkbox" class="check" id="academicIntegrity" />
-        <p>I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">UNCC Code of Academic Integrity</a></p>
+        <p>I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" target="_blank" style="text-decoration: underline;">UNCC Code of Academic Integrity</a></p>
       </div>
-      <div class="input-container">
+      <!-- <div class="input-container">
         <input type="checkbox" class="check" id="guidelines" />
         <p>I am confirming that this follows the <a href="https://legal.charlotte.edu/policies/up-407" style="text-decoration: underline;">NoteNest Guidelines</a></p>
-      </div>
+      </div> -->
       <div class="input-container">
         <upload-button id="uploadButton">Upload Notes</upload-button>
       </div>
@@ -87,7 +86,7 @@
         const professor = document.getElementById('professor').value.trim();
         const description = document.getElementById('description').value.trim();
         const academicIntegrity = document.getElementById('academicIntegrity').checked;
-        const guidelines = document.getElementById('guidelines').checked;
+        // const guidelines = document.getElementById('guidelines').checked;
         const errorMessage = document.getElementById('errorMessage');
 
         // Clear previous error message
@@ -98,7 +97,6 @@
         if (!fileInput.files.length) {
           errorMessage.textContent = 'Please upload a file.';
           errorMessage.style.display = 'block';
-          urlParams.get('success') = 'false'
           return false;
         }
         if (!course) {
@@ -121,20 +119,20 @@
           errorMessage.style.display = 'block';
           return false;
         }
-        if (!guidelines) {
-          errorMessage.textContent = 'You must confirm the NoteNest Guidelines.';
-          errorMessage.style.display = 'block';
-          return false;
-        }
+        // if (!guidelines) {
+        //   errorMessage.textContent = 'You must confirm the NoteNest Guidelines.';
+        //   errorMessage.style.display = 'block';
+        //   return false;
+        // }
 
         return true;
       }
 
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('success') === 'true') {
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
 
+      if (urlParams.get('success') === 'true') {
         // Only show the success message if there are no validation errors
         if (errorMessage.style.display === 'none') {
           successMessage.style.display = 'block';
